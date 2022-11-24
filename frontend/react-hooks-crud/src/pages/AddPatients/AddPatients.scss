@@ -1,0 +1,66 @@
+.form-control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+  border-radius: 1ex;
+  background-color: #DEE7E5;
+  border: 1px solid #706e6e;
+}
+
+
+#elipse5 {
+  z-index: -1;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+
+}
+
+.history {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+  border-radius: 1ex;
+  background-color: #DEE7E5;
+  border: 1px solid #706e6e;
+  width: 10cm;
+  height: 3cm;
+}
+
+.image {
+  display: flex;
+  position: absolute;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+  margin-top: 50px;
+
+}
+
+.form-info {
+  display: flex;
+  justify-content: flex-start;
+
+}
+
+.label {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.patient {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 10px;
+  width: 90px;
+  border: 1px solid #706e6e;
+}
+
+
+.btn-submit {
+  border-radius: 1ex;
+  border: 1px solid #706e6e;
+  background-color: #DEE7E5;
+  margin-top: 10px;
+}

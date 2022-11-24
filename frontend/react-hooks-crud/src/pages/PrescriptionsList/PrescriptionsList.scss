@@ -1,0 +1,63 @@
+
+.prescriptions{
+
+  margin-left:  50px;
+  margin-right: 50px;
+}
+.title{
+  margin-bottom: 10px;
+}
+.container-search-bar{
+  display: flex;
+  align-self: flex-start;
+  flex-flow: row;
+  
+}
+.search-bar{
+  display: flex;
+  align-self: flex-start;
+  flex-flow: row;
+  border-radius: 1ex;
+  background-color: #DEE7E5;
+  border: 1px solid ;
+  width: 750px;
+}
+.search-button{
+  border: none;
+  background-color: #DEE7E5;
+}
+.new-patient{
+  margin-top: 10px;
+}
+.button-new-patient{
+  border-radius: 1ex;
+  border: 1px solid #706e6e;
+  background-color: #DEE7E5; 
+}
+.remove-button{
+  border-radius: 1ex;
+  border: 1px solid #706e6e;
+  background-color: #DEE7E5; 
+}
+.group-item{
+  display:flex;
+  flex-flow: column wrap;
+  border: 1px solid #000000;
+  border-radius: 1ex;
+  justify-content: flex-start ;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
+.eye{
+  display: flex;
+  justify-content: flex-end;
+  align-self: flex-start ;
+  color: black;
+}
+.edit{
+  display: flex;
+  justify-content: flex-end;
+  align-self: flex-start ;
+  color: black;
+}

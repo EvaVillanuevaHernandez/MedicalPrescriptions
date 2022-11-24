@@ -1,0 +1,55 @@
+
+.form-group-1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.form-group-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.form-control{
+    width: fit-content;
+}
+
+.img{
+    display: flex;
+    align-items: center;
+    margin: auto;
+    width: 250px;
+    height: 250px;
+   
+  }
+
+.button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+.btn {
+    display: flex;
+    margin-top: 10px;
+    border-color: #9F73AB;
+    width: 15ex;
+
+}
+
+.label {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+#elipse-4{
+    z-index: -1;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
+

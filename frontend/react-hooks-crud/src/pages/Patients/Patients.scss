@@ -1,0 +1,42 @@
+.edit-form{
+    margin-left: 10%;
+}
+.patient-name{
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-right: 5px;
+    font-family: sans-serif;
+    font-size:160%;
+    color: #3d4a55;
+}
+
+
+.delete-button{   
+    display: inline;
+    border-radius: 1ex;
+    border: 2px solid #9F73AB;
+    background-color: #DEE7E5;
+    color: #3d4e5b;   
+  
+}
+
+.update-button{ 
+    display: inline;
+    border-radius: 1ex;
+    border: 2px solid #9F73AB;
+    background-color: #DEE7E5;
+    color: #3d4e5b; 
+}
+
+.cabecera{
+    display: flex;
+    margin-left: 70px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    align-items: baseline;
+}
+
+.form-control-history{
+    width: 50%;
+    height: 20ex;
+}
