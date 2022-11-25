@@ -38,6 +38,18 @@ public class Doctor implements Serializable {
 	@OneToOne
 	private User user;
 	
+	public Doctor(int id, String collegiateNum, String name, String surname, String dni) {
+		super();
+		this.id = id;
+		this.collegiateNum = collegiateNum;
+		this.name = name;
+		this.surname = surname;
+		this.dni = dni;
+	}
+	
+	public Doctor() {
+		super();
+	}
 	
 	public User getUser() {
 		return user;
@@ -91,18 +103,7 @@ public class Doctor implements Serializable {
 	public void setPatients(List<Prescription> patients) {
 		this.patients = patients;
 	}
-	public Doctor(int id, String collegiateNum, String name, String surname, String dni) {
-		super();
-		this.id = id;
-		this.collegiateNum = collegiateNum;
-		this.name = name;
-		this.surname = surname;
-		this.dni = dni;
-	}
-	
-	public Doctor() {
-		super();
-	}
+
 	
 	
 	

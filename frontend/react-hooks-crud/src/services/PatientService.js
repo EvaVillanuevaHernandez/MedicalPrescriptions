@@ -35,7 +35,7 @@ const removeAll = () => {
   return http.delete(`/patients`);
 };
 const findByPatientName = patientName => {
-  return http.get(`/patients?patientName=${patientName}`);
+  return http.get(`/patients/${patientName}`);
 };
 
 const PatientService = {

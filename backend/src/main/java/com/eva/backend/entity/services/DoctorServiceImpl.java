@@ -41,7 +41,6 @@ public class DoctorServiceImpl implements IDoctorService{
 		
 	}
 	
-
 	@Override
 	public void delete(int id) {
 		doctorDao.deleteById(id);

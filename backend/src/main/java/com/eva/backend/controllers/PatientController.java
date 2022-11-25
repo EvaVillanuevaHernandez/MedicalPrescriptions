@@ -30,6 +30,11 @@ public class PatientController {
 	public Patient getOne(@PathVariable(value = "id")int id) {
 		return patientService.get(id);
 	}
+	
+	/*@GetMapping("/patients/{name}")
+	public Patient findByName(@PathVariable(value = "name") String name) {
+		return patientService.get(name);
+	}*/
 
 	@PostMapping("/patients")
 	public void post(Patient patient){

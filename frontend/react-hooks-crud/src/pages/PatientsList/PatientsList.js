@@ -78,8 +78,10 @@ const PatientsList = () => {
             <h1 className="title">Patients</h1>
 
             <div className="container-search-bar">
-              <input className="search-bar" type="text" placeholder="Search by patient name" value={searchPatientName}
+
+              <input className="form-control" type="text" placeholder="Search by patient name" value={searchPatientName}
                 onChange={onChangeSearchPatientName} />
+
               <button className="search-button" type="button" onClick={findByPatientName}>
                 <FaIcons.FaSearch />
               </button>
@@ -151,9 +153,9 @@ const PatientsList = () => {
                 <></>
               )}
             </div>
-            <button className="remove-button" onClick={removeAllPatients} >
+            {/* <button className="remove-button" onClick={removeAllPatients} >
               Remove all 
-            </button>
+            </button> */}
           </div>
 
         </div>

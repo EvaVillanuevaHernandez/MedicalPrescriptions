@@ -15,21 +15,15 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="patient")
-
 public class Patient implements Serializable {
 
 	private static final long serialVersionUID =1L;
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	
-	private String dni;
-	
-	private String name;
-	
-	private String surname;
-	
+	private int id;	
+	private String dni;	
+	private String name;	
+	private String surname;	
 	private String history;
 	
 	@JsonIgnore
@@ -111,14 +105,5 @@ public class Patient implements Serializable {
 
 	public void setDoctor(Doctor doctor) {
 		this.doctor = doctor;
-	}
-	
-	
-
-
-
-
-	
-
-	
+	}			
 }

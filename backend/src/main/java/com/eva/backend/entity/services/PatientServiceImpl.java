@@ -59,6 +59,11 @@ public class PatientServiceImpl implements IPatientService {
 		});
 		});
 }
+	/*@Override
+	public Patient get(String name) {
+		return patientDao.findByName(name).get();
+		}*/
+	}
 	
-}
+
 

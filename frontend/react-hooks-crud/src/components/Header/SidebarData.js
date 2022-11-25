@@ -20,7 +20,7 @@ export const SidebarData = [
   },
   {
     title: 'Prescriptions',
-    path: '/List',
+    path: '/prescriptionsList',
     icon: <FaIcons.FaPrescriptionBottleAlt />,
     cName: 'nav-text'
   },

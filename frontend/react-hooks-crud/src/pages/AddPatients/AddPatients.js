@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import Header from "../../components/Header/Header";
 import PatientsDataService from "../../services/PatientService";
+
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
 import './AddPatients.scss';
+
 
 const AddPatients = () => {
   const initialPatientsState = {
@@ -51,8 +56,8 @@ const AddPatients = () => {
 
   return (
     <>
+      <Header />
       <style>{'body { background-color: #DEE7E5 ; }'}</style>
-      <Header/>
       <div className="add-form" >
         {submitted ? (
           <div>
@@ -62,42 +67,62 @@ const AddPatients = () => {
             </button>
           </div>
         ) : (
-          <div className="container">                     
-            <div className="image">
-              <img src="images/patient.png" className="patient" alt="" />   
-            </div>
-          
-            <div className="form-group">
-              <label htmlFor="name">Name:</label>
-              <input type="text" className="form-control" id="name" required value={patients.name} onChange={handleInputChange} name="name" /> 
-            </div>
+          <Form >
+            <div className="container">
+              <Row>
+                <Form.Group as={Col} md="4"
+                  className="position-relative">
 
-            <div className="form-group">
-              <label htmlFor="surname">Surname:</label>
-              <input type="text"className="form-control"  id="surname" requiredvalue={patients.surname}onChange={handleInputChange}name="surname"/> 
-            </div>
+                  <Form.Label> Name:</Form.Label>
+                  <Form.Control type="text"
+                    className="form-control"
+                    id="name" required value={patients.name}
+                    onChange={handleInputChange} name="name" />
+                </Form.Group>
 
-            <div className="form-group">
-              <label className="label" htmlFor="dni">Dni:</label>
-              <input type="text" className="form-control" id="dni" required value={patients.dni} onChange={handleInputChange} name="dni"/>  
-            </div>
+                <Form.Group as={Col} md="4"
+                  className="position-relative">
 
-            <div className="form-group" >
-              <label id="label" htmlFor="history">History: </label>
-              <input type="text" className="history" id="history" required value={patients.history} onChange={handleInputChange} name="history"  />
-            </div>
+                  <Form.Label> Surname:</Form.Label>
+                  <Form.Control type="text"
+                    className="form-control"
+                    id="surname" required value={patients.surname}
+                    onChange={handleInputChange} surname="surname" />
+                </Form.Group>
 
-            <button onClick={savePatients} className="btn-submit">
-              Submit
-            </button>
-          </div>
+              </Row>
+
+              <Form.Group as={Col} md="4"
+                className="position-relative">
+
+                <Form.Label> Dni:</Form.Label>
+                <Form.Control type="text" className="form-control"
+                  id="dni" required value={patients.dni}
+                  onChange={handleInputChange} name="dni" />
+              </Form.Group>
+
+              
+              <Form.Group as={Col} md="4"
+                className="position-relative">
+                  <Form.Label> History:</Form.Label>
+                  <Form.Control type="text" className="history"
+                    id="history" required value={patients.history}
+                    onChange={handleInputChange} name="history" />
+                </Form.Group>
+
+                <button onClick={savePatients} className="btn-submit">
+                  Submit
+                </button>
+              </div>
+          </Form>
+
         )}
       </div>
       <div id="elipse5">
-      <img src="images/elipse5.png" alt=""/>
+        <img src="images/elipse5.png" alt="" />
       </div>
-      
-      
+
+
 
     </>
   );

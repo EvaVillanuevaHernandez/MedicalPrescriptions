@@ -9,14 +9,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.eva.backend.entity.models.Doctor;
 import com.eva.backend.entity.services.IDoctorService;
 
 @RestController	
-@RequestMapping(value="/doctors")
 @CrossOrigin(origins ="*")
 public class DoctorController {
 	

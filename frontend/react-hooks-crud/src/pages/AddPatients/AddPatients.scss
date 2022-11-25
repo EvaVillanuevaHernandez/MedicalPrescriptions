@@ -1,14 +1,27 @@
 .form-control {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: 10px;
   border-radius: 1ex;
   background-color: #DEE7E5;
   border: 1px solid #706e6e;
+  width: 90%;
+  height: 30px;
 }
-
-
+.add-form{
+  display:relative;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  margin-top: 20px;
+  width:50%;
+  height:60%;
+  position:relative;
+  border: 1px solid #A88A1E;
+  border-radius: 1ex;
+}
+.container{
+  margin-top: 30px;
+  margin-left: 20px;
+}
 #elipse5 {
   z-index: -1;
   position: absolute;
@@ -18,30 +31,13 @@
 }
 
 .history {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: 10px;
+  display: relative;
+  // justify-content: center;
   border-radius: 1ex;
   background-color: #DEE7E5;
   border: 1px solid #706e6e;
-  width: 10cm;
-  height: 3cm;
-}
-
-.image {
-  display: flex;
-  position: absolute;
-  justify-content: flex-start;
-  margin-bottom: 10px;
-  margin-top: 50px;
-
-}
-
-.form-info {
-  display: flex;
-  justify-content: flex-start;
-
+  width: 90%;
+  height: 60px;
 }
 
 .label {
@@ -49,18 +45,18 @@
   margin-left: 10px;
 }
 
-.patient {
-  display: flex;
-  justify-content: flex-start;
-  margin-left: 10px;
-  width: 90px;
-  border: 1px solid #706e6e;
-}
-
-
 .btn-submit {
   border-radius: 1ex;
-  border: 1px solid #706e6e;
+  border: 2px solid #9F73AB;
   background-color: #DEE7E5;
   margin-top: 10px;
+  margin-left: 15px;
+  
 }
+
+// @media screen and (max-width: 768)  {
+
+//   .add-form{
+//     margin-top: 60%;
+//   }
+// }
