@@ -141,14 +141,14 @@ const Patients = props => {
                     <button className="delete-button" onClick={deletePatients}>
                       <BiIcons.BiTrashAlt />Delete
                     </button>
-                    {/* <p>{message}</p> */}
+                    <p>{message}</p>
                   </Form.Group>
 
                   <Form.Group className="position-relative mb-2">
                   <button type="submit" className="update-button" onClick={updatePatients} >
                     <BiIcons.BiEditAlt />Update
                   </button>
-                  {/* <p>{message}</p> */}
+                  <p>{message}</p>
                   </Form.Group>
               </Row>
           </div>

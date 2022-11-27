@@ -83,7 +83,7 @@ const Login = () => {
         <img src="images/logo.png" alt="logo" className="img" />
         <Form onSubmit={handleLogin} ref={form}>
           <div className="form-group-1">
-            <label id="label" htmlFor="username">Username</label>
+            <label id="label" htmlFor="username">Username: </label>
             <Input type="text" className="form-control" name="username" value={username}
               onChange={onChangeUsername} validations={[required]} />
           </div>
@@ -91,7 +91,7 @@ const Login = () => {
 
         <Form onSubmit={handleLogin} ref={form}>
           <div className="form-group-2">
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">Password: </label>
             <Input type="password" className="form-control" name="password"
               value={password} onChange={onChangePassword} validations={[required]} />
           </div>

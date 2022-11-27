@@ -9,6 +9,7 @@ import PatientList from "./pages/PatientsList/PatientsList";
 import PrescriptionsList from "./pages/PrescriptionsList/PrescriptionsList";
 import Prescriptions from "./pages/Prescriptions/Prescriptions";
 import AddPatients from "./pages/AddPatients/AddPatients";
+import AddPrescriptions from "./pages/AddPrescriptions/AddPrescriptions";
 import Patients from "./pages/Patients/Patients";
 import EventBus from "./common/EventBus";
 import Profile from "./pages/Profile/Profile";
@@ -48,10 +49,11 @@ const App = () => {
     <div>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/patients" element={<PatientList />} />
+        <Route path="/patients" element={<PatientList/>} />
         <Route path="/prescriptionsList" element={<PrescriptionsList />} />
-        <Route path="/prescriptions" element={<Prescriptions />} />
+        <Route path="/prescriptions" element={<Prescriptions/>} />
         <Route path="/AddPatients" element={<AddPatients />} />
+        <Route path="/AddPrescriptions" element={<AddPrescriptions />} />
         <Route path="/patients/:id" element={<Patients />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />

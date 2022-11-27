@@ -3,6 +3,7 @@ package com.eva.backend.entity.models;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,7 +14,14 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+
 @Entity
+/*@Builder
+@AllArgsConstructor
+@NoArgsConstructor*/
 @Table(name="patient")
 public class Patient implements Serializable {
 
@@ -25,6 +33,11 @@ public class Patient implements Serializable {
 	private String name;	
 	private String surname;	
 	private String history;
+	/*private String NameImg;
+	private String typeImg;
+	
+	@Column(name="image",unique = false,nullable=false,length=100000)
+	private byte[] image;*/
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="patient")
@@ -96,6 +109,36 @@ public class Patient implements Serializable {
 	public void setHistory(String history) {
 		this.history = history;
 	}
+
+	
+	/*public String getNameImg() {
+		return NameImg;
+	}
+
+
+	public void setNameImg(String nameImg) {
+		NameImg = nameImg;
+	}
+
+
+	public String getTypeImg() {
+		return typeImg;
+	}
+
+
+	public void setTypeImg(String typeImg) {
+		this.typeImg = typeImg;
+	}
+
+
+	public byte[] getImage() {
+		return image;
+	}
+
+
+	public void setImage(byte[] image) {
+		this.image = image;
+	}*/
 
 
 	public Doctor getDoctor() {

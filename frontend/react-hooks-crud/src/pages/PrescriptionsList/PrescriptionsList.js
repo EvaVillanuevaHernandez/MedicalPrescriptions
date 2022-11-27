@@ -77,7 +77,7 @@ const PrescriptionsList = () => {
         <Header />
         <div className="prescriptions">
           <div className="col-md-6">
-            <h4 className="title">Patients</h4>
+            <h4 className="title">Prescriptions</h4>
             <div className="container-search-bar">
               <input className="search-bar" type="text" placeholder="Search by patient name" value={searchPatientName}
                 onChange={onChangeSearchPatientName} />
@@ -85,11 +85,14 @@ const PrescriptionsList = () => {
                 <FaIcons.FaSearch />
               </button>
             </div>
-            <div className="new-patient">
-              <Link to="/Prescriptions">
-                <button className="button-new-patient" type="button"><AiIcons.AiOutlinePlus /> New patient </button>
+
+            
+          <div className="new-patient">
+              <Link to="/AddPrescriptions">
+                <button className="button-new-patient" type="button"><AiIcons.AiOutlinePlus />Prescription </button>
               </Link>
             </div>
+            
             <br />
             <div className="general">
               {
@@ -149,15 +152,18 @@ const PrescriptionsList = () => {
                   >
                     <FaIcons.FaEdit />
                   </Link>
+                  
                 </div>
               ) : (
                 <></>
               )}
+
             </div>
             <button className="remove-button" onClick={removeAllPrescriptions} >
               Remove all 
             </button>
           </div>
+
 
         </div>
       </IconContext.Provider>

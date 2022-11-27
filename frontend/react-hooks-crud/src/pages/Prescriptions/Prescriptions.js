@@ -3,8 +3,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import PrescriptionsDataService from "../../services/PrescriptionsService";
 import Header from "../../components/Header/Header";
 
-
-
 const Prescriptions = props => {
   const { id }= useParams();
   let navigate = useNavigate();

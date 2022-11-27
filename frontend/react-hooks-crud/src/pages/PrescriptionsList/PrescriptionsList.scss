@@ -19,7 +19,7 @@
   flex-flow: row;
   border-radius: 1ex;
   background-color: #DEE7E5;
-  border: 1px solid ;
+  border: 1px solid #aba673;
   width: 750px;
 }
 .search-button{
@@ -29,20 +29,17 @@
 .new-patient{
   margin-top: 10px;
 }
-.button-new-patient{
-  border-radius: 1ex;
-  border: 1px solid #706e6e;
-  background-color: #DEE7E5; 
-}
+
 .remove-button{
   border-radius: 1ex;
-  border: 1px solid #706e6e;
+  border: 1px solid #9F73AB;
   background-color: #DEE7E5; 
 }
 .group-item{
   display:flex;
   flex-flow: column wrap;
-  border: 1px solid #000000;
+  border: 2px solid #9F73AB;
+  ;
   border-radius: 1ex;
   justify-content: flex-start ;
   padding: 20px;

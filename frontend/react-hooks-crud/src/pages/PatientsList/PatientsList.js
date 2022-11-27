@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { IconContext } from 'react-icons';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
+
 import Header from "../../components/Header/Header";
 import PatientsDataService from "../../services/PatientService";
 import "./PatientsList.scss"
@@ -148,14 +149,20 @@ const PatientsList = () => {
                       <FaIcons.FaEdit />
                     </Link>
                   </div>
+                  {/* <div class="edit">
+                    <Link 
+                      to={"/prescriptionsList"}>
+                      <FaIcons.FaEdit />
+                    </Link>
+                  </div> */}
                 </div>
               ) : (
                 <></>
               )}
             </div>
-            {/* <button className="remove-button" onClick={removeAllPatients} >
+            <button className="remove-button" onClick={removeAllPatients} >
               Remove all 
-            </button> */}
+            </button>
           </div>
 
         </div>

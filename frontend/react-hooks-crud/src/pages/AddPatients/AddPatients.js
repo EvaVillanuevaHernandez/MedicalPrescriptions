@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import Header from "../../components/Header/Header";
 import PatientsDataService from "../../services/PatientService";
-
-import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
-import Row from 'react-bootstrap/Row';
 import './AddPatients.scss';
 
 
@@ -54,78 +50,64 @@ const AddPatients = () => {
     setSubmitted(false);
   };
 
-  return (
-    <>
-      <Header />
-      <style>{'body { background-color: #DEE7E5 ; }'}</style>
-      <div className="add-form" >
-        {submitted ? (
-          <div>
-            <h4>You submitted successfully!</h4>
-            <button className="btn-add" onClick={newPatients}>
-              Add
-            </button>
-          </div>
-        ) : (
-          <Form >
+ 
+    return (
+      <>
+        <Header />
+        <style>{'body { background-color: #DEE7E5 ; }'}</style>
+        <div className="add-form" >
+          {submitted ? (
+            <div className="add">
+              <button className="btn-add" onClick={newPatients}>
+                Add
+              </button>
+              <h4 className="add">You submitted successfully, click add to finish!</h4>
+
+            </div>
+          ) : (
+
             <div className="container">
-              <Row>
-                <Form.Group as={Col} md="4"
-                  className="position-relative">
+            
+                <div className="form-group">
+                  <label htmlFor="name">Name:</label>
+                  <input type="text" className="form-control" id="name"
+                    required value={patients.name} onChange={handleInputChange} name="name"
+                    minLength={3}  maxLength={40}/>
+                </div>
 
-                  <Form.Label> Name:</Form.Label>
-                  <Form.Control type="text"
-                    className="form-control"
-                    id="name" required value={patients.name}
-                    onChange={handleInputChange} name="name" />
-                </Form.Group>
+                <div className="form-group">
+                  <label htmlFor="surname">Surname:</label>
+                  <input type="text" className="form-control" id="surname"
+                    requiredvalue={patients.surname} onChange={handleInputChange} name="surname" 
+                    minLength={3}  maxLength={40}/>
+                </div>
 
-                <Form.Group as={Col} md="4"
-                  className="position-relative">
+                <div className="form-group">
+                  <label className="label" htmlFor="dni">Dni:</label>
+                  <input type="text" className="form-control" id="dni"
+                    required value={patients.dni} onChange={handleInputChange} name="dni"
+                    maxLength={9}/>
+                </div>
 
-                  <Form.Label> Surname:</Form.Label>
-                  <Form.Control type="text"
-                    className="form-control"
-                    id="surname" required value={patients.surname}
-                    onChange={handleInputChange} surname="surname" />
-                </Form.Group>
-
-              </Row>
-
-              <Form.Group as={Col} md="4"
-                className="position-relative">
-
-                <Form.Label> Dni:</Form.Label>
-                <Form.Control type="text" className="form-control"
-                  id="dni" required value={patients.dni}
-                  onChange={handleInputChange} name="dni" />
-              </Form.Group>
-
-              
-              <Form.Group as={Col} md="4"
-                className="position-relative">
-                  <Form.Label> History:</Form.Label>
-                  <Form.Control type="text" className="history"
-                    id="history" required value={patients.history}
-                    onChange={handleInputChange} name="history" />
-                </Form.Group>
+                <div className="form-group" >
+                  <label id="label" htmlFor="history">History: </label>
+                  <input type="text" className="form-control-history" id="history"
+                    required value={patients.history} onChange={handleInputChange} name="history" />
+                </div>
 
                 <button onClick={savePatients} className="btn-submit">
                   Submit
                 </button>
-              </div>
-          </Form>
+             
+            </div>
+          )}
+        </div>
+        <div id="elipse5">
+          <img src="images/elipse5.png" alt="" />
+        </div>
 
-        )}
-      </div>
-      <div id="elipse5">
-        <img src="images/elipse5.png" alt="" />
-      </div>
+      </>
+    );
+  };
 
-
-
-    </>
-  );
-};
-
-export default AddPatients;
+  export default AddPatients;
