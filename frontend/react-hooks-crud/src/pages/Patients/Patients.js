@@ -19,16 +19,20 @@ const Patients = props => {
     id: null,
     name: "",
     surname: "",
+    secondSurname: "",
     dni: "",
     history: "",
+    image: "",
+    typeImage: ""
   };
-  const [currentPatients, setCurrentPatients] = useState(initialPatientsState);
+  const [currentPatient, setCurrentPatient] = useState(initialPatientsState);
   const [message, setMessage] = useState("");
 
   const getPatients = id => {
     PatientsDataService.get(id)
       .then(response => {
-        setCurrentPatients(response.data);
+        setCurrentPatient(response.data);
+
         console.log(response.data);
       })
       .catch(e => {
@@ -43,24 +47,27 @@ const Patients = props => {
 
   const handleInputChange = event => {
     const { name, value } = event.target;
-    setCurrentPatients({ ...currentPatients, [name]: value });
+    setCurrentPatient({ ...currentPatient, [name]: value });
   };
 
 
-  const updatePatients = () => {
-    PatientsDataService.update(currentPatients.id, currentPatients)
+  const updatePatient = () => {
+    PatientsDataService.update(currentPatient.id, currentPatient)
       .then(response => {
         console.log(response.data);
         setMessage("The Patient was updated successfully!");
+        
         navigate("/patients");
+
       })
       .catch(e => {
+
         console.log(e);
       });
   };
 
-  const deletePatients = () => {
-    PatientsDataService.remove(currentPatients.id)
+  const deletePatient = () => {
+    PatientsDataService.remove(currentPatient.id)
       .then(response => {
         console.log(response.data);
         setMessage("The Patient was deleted successfully!");
@@ -71,28 +78,35 @@ const Patients = props => {
       });
   };
 
+ 
   return (
     <>
       <Header />
       <style>{'body { background-color: #DEE7E5 ; }'}</style>
       <div className="cabecera">
-        <p className="patient-name">{currentPatients.name}</p>
-
+        <p className="patient-name">{currentPatient.name}</p>
       </div>
 
       <div className="form">
-        {currentPatients ? (
+        {currentPatient ? (
           <div>
             <Form >
               <div className="container">
                 <Row className="mb-3">
+
+                  {/* <Form.Group as={Col} md="4">
+                    <img src={`data:${currentPatient.typeImage};base64,${currentPatient.image}`}
+                      alt=" " className="patient-image" onChange={handleInputChange} />
+                  </Form.Group> */}
+                  
+
                   <Form.Group as={Col} md="4"
                     className="position-relative">
                     <Form.Label> Name:</Form.Label>
                     <Form.Control type="text"
                       className="form-control"
                       id="name" name="name"
-                      value={currentPatients.name}
+                      value={currentPatient.name}
                       onChange={handleInputChange} />
 
                   </Form.Group>
@@ -106,10 +120,23 @@ const Patients = props => {
                       className="form-control"
                       id="surname"
                       name="surname"
-                      value={currentPatients.surname}
+                      value={currentPatient.surname}
                       onChange={handleInputChange} />
                   </Form.Group>
-                </Row>
+                  </Row>
+                  <Form.Group as={Col} md="4"
+                    className="position-relative">
+
+                    <Form.Label>Second surname:</Form.Label>
+                    <Form.Control
+                      type="text"
+                      className="form-control"
+                      id="secondSurname"
+                      name="secondSurname"
+                      value={currentPatient.secondSurname}
+                      onChange={handleInputChange} />
+                  </Form.Group>
+               
 
                 <Form.Group as={Col} md="4"
                   className="position-relative">
@@ -120,7 +147,7 @@ const Patients = props => {
                     className="form-control"
                     id="dni"
                     name="dni"
-                    value={currentPatients.dni}
+                    value={currentPatient.dni}
                     onChange={handleInputChange}
                   />
                 </Form.Group>
@@ -132,35 +159,37 @@ const Patients = props => {
                     className="form-control-history"
                     id="history"
                     name="history"
-                    value={currentPatients.history}
+                    value={currentPatient.history}
                     onChange={handleInputChange}
                   />
-                </Form.Group>
-                <Row className="mb-3">
-                  <Form.Group className="position-relative mb-2">
-                    <button className="delete-button" onClick={deletePatients}>
-                      <BiIcons.BiTrashAlt />Delete
-                    </button>
-                    <p>{message}</p>
-                  </Form.Group>
+                </Form.Group> 
 
-                  <Form.Group className="position-relative mb-2">
-                  <button type="submit" className="update-button" onClick={updatePatients} >
-                    <BiIcons.BiEditAlt />Update
+              </div>
+              
+              
+              <button className="delete-button" onClick={deletePatient}>
+                    <BiIcons.BiTrashAlt /> Delete
                   </button>
                   <p>{message}</p>
-                  </Form.Group>
-              </Row>
-          </div>
+
+                  <button type="submit" className="update-button" onClick={updatePatient} 
+                  >
+                    <BiIcons.BiEditAlt />Update    
+                  </button>
+                  
+                  <p>{message}</p>
+
+              
             </Form>
 
-    </div>
-  ) : (
-    <div id="elipse5">
-      <img src="/images/elipse5.png" alt="" />
-    </div>
-  )
-}
+
+          </div>
+        ) : (
+          <div id="elipse5">
+            <img src="/images/elipse5.png" alt="" />
+          </div>
+        )
+        }
       </div >
 
     </>

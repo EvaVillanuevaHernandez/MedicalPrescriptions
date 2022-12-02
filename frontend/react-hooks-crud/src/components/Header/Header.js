@@ -16,7 +16,7 @@ function Header() {
   return (
     <>
       <IconContext.Provider value={{ color: 'none' }}>
-      <img src="/images/elipse2.png" className="elipse2" alt="" />
+        <img src="/images/elipse2.png" className="elipse2" alt="" />
         <div className='navbar' >
           <Link to='#' >
             <BiIcons.BiMenu className='menu-bars' onClick={showSidebar} />

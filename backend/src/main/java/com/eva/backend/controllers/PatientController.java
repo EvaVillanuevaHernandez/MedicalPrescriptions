@@ -28,21 +28,25 @@ public class PatientController {
 	
 	@GetMapping("/patients")
 	public List<Patient> getAllPatients(){
-		/*List<Patient>db=patientService.getAll();
+		List<Patient>db=patientService.getAll();
 		db.forEach((x)->{
-			byte[] noZip=ImageUtility.decompressImage(x.getImage());
-			x.setImage(noZip);
-		});*/
+//			byte[] noZip=ImageUtility.decompressImage(x.getImage());
+//			x.setImage(noZip);
+			if(x.getImage()!=null){
+				byte[] noZip=ImageUtility.decompressImage(x.getImage());
+				x.setImage(noZip);
+			}
+		});
 		
-		//return db;
-		return patientService.getAll();
+		return db;
+		//return patientService.getAll();
 	}
 	
 	@GetMapping("/patients/{id}")
 	public Patient getOne(@PathVariable(value = "id")int id) {
-		//final Patient db= patientService.get(id);
-		return patientService.get(id);
-		/*return Patient.builder()
+		final Patient db= patientService.get(id);
+		//return patientService.get(id);
+		return Patient.builder()
 				.nameImg(db.getNameImg())
 				.typeImg(db.getTypeImg())
 				.image(ImageUtility.decompressImage(db.getImage()))
@@ -51,7 +55,7 @@ public class PatientController {
 				.dni(db.getDni())
 				.history(db.getHistory())
 				.id(db.getId())
-				.build();*/
+				.build();
 	}
 	
 	/*@GetMapping("/patients/{name}")
@@ -60,26 +64,36 @@ public class PatientController {
 	}*/
 
 	@PostMapping("/patients")
-	public void post(Patient patient/*,@RequestParam("file")MultipartFile image)throws IOException*/){
-		/*String randomID =UUID.randomUUID().toString();
-		String filename = randomID.concat(randomID+image.getOriginalFilename().substring(image.getOriginalFilename().lastIndexOf(".")));
+	public void post(Patient patient,@RequestParam(value = "file",required = false)MultipartFile image)throws IOException{
+		if(image!=null){
+			String randomID =UUID.randomUUID().toString();
+			String filename = randomID.concat(randomID+image.getOriginalFilename().substring(image.getOriginalFilename().lastIndexOf(".")));
+
+			patient.setNameImg(filename);
+			patient.setTypeImg(image.getContentType());
+			patient.setImage(ImageUtility.compressImage(image.getBytes()));
+		}
 		
-		patient.setNameImg(filename);
-		patient.setTypeImg(image.getContentType());
-		patient.setImage(ImageUtility.compressImage(image.getBytes()));*/
 		patientService.post(patient);
 		
 	}
-	
+
+//	@PostMapping("/patients1")
+//	public void post(Patient patient)throws IOException{
+//
+//		patientService.post(patient);
+//
+//	}
+
 	
 	@PutMapping("/patients/{id}")
-	public void put(Patient patient,@PathVariable(value = "id")int id/*,@RequestParam("file") MultipartFile image)throws IOException*/){
-		/*String randomID=UUID.randomUUID().toString();
+	public void put(Patient patient,@PathVariable(value = "id")int id,@RequestParam("file") MultipartFile image)throws IOException{
+		String randomID=UUID.randomUUID().toString();
 		String filename = randomID.concat(randomID + (image.getOriginalFilename().lastIndexOf(".")));
 		
 		patient.setNameImg(filename);
 		patient.setTypeImg(image.getContentType());
-		patient.setImage(ImageUtility.compressImage(image.getBytes()));*/
+		patient.setImage(ImageUtility.compressImage(image.getBytes()));
 		patientService.put(patient, id);
 	}
 	

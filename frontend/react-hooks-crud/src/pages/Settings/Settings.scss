@@ -1,0 +1,25 @@
+
+.logo-set{
+    display: flex;
+    align-items: center;
+    margin: auto;
+    width: 250px;
+    height: 250px;
+   
+  }
+
+  .help{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:#000000;
+  }
+
+  .version{
+    display: flex;
+    margin-top: 100px;
+    justify-content: center;
+    align-items: flex-end;
+    color:#213F5C;
+  }

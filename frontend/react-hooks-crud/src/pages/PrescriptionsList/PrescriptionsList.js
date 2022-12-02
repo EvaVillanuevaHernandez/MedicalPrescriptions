@@ -7,6 +7,7 @@ import * as AiIcons from 'react-icons/ai';
 import Header from "../../components/Header/Header";
 import PrescriptionsDataService from "../../services/PrescriptionsService";
 import "./PrescriptionsList.scss"
+import GroupItem from "../../components/GroupItem/GroupItem";
 
 const PrescriptionsList = () => {
   const [prescriptions, setPrescriptions] = useState([]);
@@ -94,22 +95,14 @@ const PrescriptionsList = () => {
             </div>
             
             <br />
-            <div className="general">
-              {
-                prescriptions && prescriptions.map((prescriptions, index) => (
-                  <div className={"group-item " + (index === currentIndex ? "active" : "")}
-                    onClick={() => setActivePrescriptions(prescriptions, index)}
-                    key={index}>
-                    <div>
-                      <label>
-                        <strong>{prescriptions.patientName}</strong>
-                      </label>{" "}
-                      <Link className="eye">
-                        <FaIcons.FaEye />
-                      </Link>
-                    </div>
-                  </div>
-
+            <div className="general">      
+               {
+                prescriptions &&
+                prescriptions.map((p, index) => (
+                  <GroupItem active={index === currentIndex}
+                    text={`${p.patientName}`}
+                    action={() => setActivePrescriptions(p, index)}
+                    index={index} key={index} />
                 ))
               }
             </div>

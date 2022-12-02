@@ -6,14 +6,17 @@ import * as AiIcons from 'react-icons/ai';
 
 import Header from "../../components/Header/Header";
 import PatientsDataService from "../../services/PatientService";
+
 import "./PatientsList.scss"
+import GroupItem from "../../components/GroupItem/GroupItem";
 
 
 const PatientsList = () => {
   const [patients, setPatients] = useState([]);
-  const [currentPatients, setCurrentPatients] = useState(null);
+  const [currentPatient, setCurrentPatient] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(-1);
   const [searchPatientName, setSearchPatientName] = useState("");
+
 
   useEffect(() => {
     retrievePatients();
@@ -37,12 +40,12 @@ const PatientsList = () => {
 
   const refreshList = () => {
     retrievePatients();
-    setCurrentPatients(null);
+    setCurrentPatient(null);
     setCurrentIndex(-1);
   };
 
-  const setActivePatients = (patients, index) => {
-    setCurrentPatients(patients);
+  const setActivePatient = (patient, index) => {
+    setCurrentPatient(patient);
     setCurrentIndex(index);
   };
 
@@ -70,8 +73,8 @@ const PatientsList = () => {
 
   return (
 
-    <>  
-      <Header/>
+    <>
+      <Header />
       <style>{'body { background-color: #DEE7E5 ; }'}</style>
       <IconContext.Provider value={{ color: '#231F20' }}>
         <div className="patients">
@@ -80,7 +83,9 @@ const PatientsList = () => {
 
             <div className="container-search-bar">
 
-              <input className="form-control" type="text" placeholder="Search by patient name" value={searchPatientName}
+              <input className="form-control" type="text"
+                placeholder="Search by patient name"
+                value={searchPatientName}
                 onChange={onChangeSearchPatientName} />
 
               <button className="search-button" type="button" onClick={findByPatientName}>
@@ -96,56 +101,55 @@ const PatientsList = () => {
             <br />
             <div className="general">
               {
-                patients && patients.map((patients, index) => (
-                  <div className={"group-item " + (index === currentIndex ? "active" : "")}
-                    onClick={() => setActivePatients(patients, index)}
-                    key={index}>
-                    <div>
-                      <label className="label">
-                        <strong>{patients.name}</strong>
-                        <strong>{patients.surname}</strong>
-                      </label>{" "}
-                      <Link className="eye">
-                        <FaIcons.FaEye />
-                      </Link>
-                    </div>
-                  </div>
-
+                patients &&
+                patients.map((p, index) => (
+                  <GroupItem active={index === currentIndex}
+                    text={`${p.name} ${p.surname}`}
+                    action={() => setActivePatient(p, index)}
+                    index={index} key={index} />
                 ))
               }
+
             </div>
             <div className="col-md-6">
-              {currentPatients ? (
+              {currentPatient ? (
                 <div>
                   <div>
                     <label>
                       <strong>Name:</strong>
                     </label>{" "}
-                    {currentPatients.name}
+                    {currentPatient.name}
                   </div>
                   <div>
                     <label>
                       <strong>Surname:</strong>
                     </label>{" "}
-                    {currentPatients.surname}
+                    {currentPatient.surname}
+                  </div>
+                  <div>
+                    <label>
+                      <strong>Second surname:</strong>
+                    </label>{" "}
+                    {currentPatient.secondSurname}
                   </div>
                   <div>
                     <label>
                       <strong>Dni:</strong>
                     </label>{" "}
-                    {currentPatients.dni}
+                    {currentPatient.dni}
                   </div>
-                 
+
                   <div>
                     <label>
                       <strong>History:</strong>
                     </label>{" "}
-                    {currentPatients.history}
+                    {currentPatient.history}
                   </div>
-                 
+
+
                   <div class="edit">
-                    <Link 
-                      to={"/patients/" + currentPatients.id}>
+                    <Link
+                      to={"/patients/" + currentPatient.id}>
                       <FaIcons.FaEdit />
                     </Link>
                   </div>
@@ -161,7 +165,7 @@ const PatientsList = () => {
               )}
             </div>
             <button className="remove-button" onClick={removeAllPatients} >
-              Remove all 
+              Remove all
             </button>
           </div>
 

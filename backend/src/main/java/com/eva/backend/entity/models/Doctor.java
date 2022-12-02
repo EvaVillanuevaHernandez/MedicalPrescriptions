@@ -25,6 +25,8 @@ public class Doctor implements Serializable {
 	private String collegiateNum;
 	private String name;
 	private String surname;
+
+	private String secondSurname;
 	private String dni;
 	
 	@JsonIgnore
@@ -38,12 +40,13 @@ public class Doctor implements Serializable {
 	@OneToOne
 	private User user;
 	
-	public Doctor(int id, String collegiateNum, String name, String surname, String dni) {
+	public Doctor(int id, String collegiateNum, String name, String surname,String secondSurname, String dni) {
 		super();
 		this.id = id;
 		this.collegiateNum = collegiateNum;
 		this.name = name;
 		this.surname = surname;
+		this.secondSurname = secondSurname;
 		this.dni = dni;
 	}
 	
@@ -81,6 +84,14 @@ public class Doctor implements Serializable {
 	public void setSurname(String surname) {
 		this.surname = surname;
 	}
+
+	public String getSecondSurname() {
+		return secondSurname;
+	}
+	public void setSecondSurname(String secondSurname) {
+		this.secondSurname = secondSurname;
+	}
+
 	public String getDni() {
 		return dni;
 	}

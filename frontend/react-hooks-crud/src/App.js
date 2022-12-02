@@ -13,8 +13,8 @@ import AddPrescriptions from "./pages/AddPrescriptions/AddPrescriptions";
 import Patients from "./pages/Patients/Patients";
 import EventBus from "./common/EventBus";
 import Profile from "./pages/Profile/Profile";
-
-
+import Home from "./pages/Home/Home";
+import Settings from "./pages/Settings/Settings";
 const App = () => {
   // const [,setShowModeratorBoard] = useState(false);
   const [,setShowAdminBoard] = useState(false);
@@ -48,10 +48,12 @@ const App = () => {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/settings" element={<Settings/>} />
         <Route path="/patients" element={<PatientList/>} />
         <Route path="/prescriptionsList" element={<PrescriptionsList />} />
         <Route path="/prescriptions" element={<Prescriptions/>} />
+        <Route path="/prescriptions/:id" element={<Prescriptions/>} />
         <Route path="/AddPatients" element={<AddPatients />} />
         <Route path="/AddPrescriptions" element={<AddPrescriptions />} />
         <Route path="/patients/:id" element={<Patients />} />

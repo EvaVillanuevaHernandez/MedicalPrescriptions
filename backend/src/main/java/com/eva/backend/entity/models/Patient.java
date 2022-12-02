@@ -19,9 +19,9 @@ import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 @Entity
-/*@Builder
+@Builder
 @AllArgsConstructor
-@NoArgsConstructor*/
+@NoArgsConstructor
 @Table(name="patient")
 public class Patient implements Serializable {
 
@@ -33,11 +33,11 @@ public class Patient implements Serializable {
 	private String name;	
 	private String surname;	
 	private String history;
-	/*private String NameImg;
+	private String nameImg;
 	private String typeImg;
 	
-	@Column(name="image",unique = false,nullable=false,length=100000)
-	private byte[] image;*/
+	@Column(name="image",unique = false,length=100000)
+	private byte[] image;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="patient")
@@ -46,15 +46,18 @@ public class Patient implements Serializable {
 	@ManyToOne
 	private Doctor doctor;
 	
-	public Patient(String dni, String name, String surname, String history, String doctorId, int id) {
-		super();
-		this.dni = dni;
-		this.name = name;
-		this.surname = surname;
-		this.history = history;
-		this.id = id;
-	}
-	
+//	public Patient(String dni, String name, String surname, String history, String doctorId, int id) {
+//		super();
+//		this.dni = dni;
+//		this.name = name;
+//		this.surname = surname;
+//		this.history = history;
+//		this.id = id;
+//	}
+
+//	public Patient(){
+//		super();
+//	}
 	
 	public int getId() {
 		return id;
@@ -74,9 +77,7 @@ public class Patient implements Serializable {
 		this.prescriptions = prescriptions;
 	}
 	
-	public Patient() {
-		super();
-	}
+
 	
 	public String getDni() {
 		return dni;
@@ -110,36 +111,30 @@ public class Patient implements Serializable {
 		this.history = history;
 	}
 
-	
-	/*public String getNameImg() {
-		return NameImg;
-	}
 
+	public String getNameImg() {
+		return nameImg;
+	}
 
 	public void setNameImg(String nameImg) {
-		NameImg = nameImg;
+		this.nameImg = nameImg;
 	}
-
 
 	public String getTypeImg() {
 		return typeImg;
 	}
 
-
 	public void setTypeImg(String typeImg) {
 		this.typeImg = typeImg;
 	}
-
 
 	public byte[] getImage() {
 		return image;
 	}
 
-
 	public void setImage(byte[] image) {
 		this.image = image;
-	}*/
-
+	}
 
 	public Doctor getDoctor() {
 		return doctor;

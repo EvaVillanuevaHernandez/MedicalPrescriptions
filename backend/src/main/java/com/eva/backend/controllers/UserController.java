@@ -18,7 +18,6 @@ import com.eva.backend.entity.services.IUserService;
 @CrossOrigin(origins ="*")
 public class UserController {
 
-	
 @Autowired
 IUserService userService;
 

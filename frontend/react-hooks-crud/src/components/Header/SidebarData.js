@@ -26,7 +26,7 @@ export const SidebarData = [
   },
   {
     title: 'Settings',
-    path: '/setting',
+    path: '/settings',
     icon: <FiIcons.FiSettings />,
     cName: 'nav-text'
   },

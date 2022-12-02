@@ -1,9 +1,7 @@
-.form {
+.form-prescriptions {
     align-items: center;
     justify-content: center;
     margin: auto;
-    // margin-left: 5%;
-    // margin-top: 10px;
     width:50%;
     height:50%;
     position:relative;
@@ -11,7 +9,7 @@
     border-radius: 1ex;
 }
 
-.form-control{
+.form-control-prescriptions{
     display: flex;
     border-radius: 1ex;
     background-color: #DEE7E5;
@@ -34,7 +32,6 @@
     // border: 2px solid #9F73AB;
     background-color: #DEE7E5;
     color: #3d4e5b;
-    margin-left: 20px;
 
 }
 
@@ -44,7 +41,6 @@
     // border: 2px solid #9F73AB;
     background-color: #DEE7E5;
     color: #3d4e5b;
-    margin-left: 20px;
 }
 
 
@@ -56,7 +52,7 @@
     align-items: baseline;
 }
 
-.form-control-history {
+.form-control-posology {
     width: 90%;
     height: 60px;
 }
