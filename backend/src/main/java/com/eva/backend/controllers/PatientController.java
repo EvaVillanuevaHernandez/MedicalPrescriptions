@@ -52,6 +52,7 @@ public class PatientController {
 				.image(ImageUtility.decompressImage(db.getImage()))
 				.name(db.getName())
 				.surname(db.getSurname())
+				.secondSurname(db.getSecondSurname())
 				.dni(db.getDni())
 				.history(db.getHistory())
 				.id(db.getId())

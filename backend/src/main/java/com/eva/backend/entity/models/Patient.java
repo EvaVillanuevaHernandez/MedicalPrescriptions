@@ -31,7 +31,8 @@ public class Patient implements Serializable {
 	private int id;	
 	private String dni;	
 	private String name;	
-	private String surname;	
+	private String surname;
+	private String secondSurname;
 	private String history;
 	private String nameImg;
 	private String typeImg;
@@ -101,6 +102,14 @@ public class Patient implements Serializable {
 
 	public void setSurname(String surname) {
 		this.surname = surname;
+	}
+
+	public String getSecondSurname() {
+		return secondSurname;
+	}
+
+	public void setSecondSurname(String secondSurname) {
+		this.secondSurname = secondSurname;
 	}
 
 	public String getHistory() {
