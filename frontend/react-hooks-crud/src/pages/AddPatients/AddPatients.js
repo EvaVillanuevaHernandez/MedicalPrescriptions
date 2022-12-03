@@ -12,8 +12,10 @@ const AddPatients = () => {
     surname: "",
     secondSurname: "",
     dni: "",
-    history: ""
+    history: "",
+    image: null
   };
+
   const [patients, setPatients] = useState(initialPatientsState);
   const [submitted, setSubmitted] = useState(false);
 
@@ -22,13 +24,17 @@ const AddPatients = () => {
     setPatients({ ...patients, [name]: value });
   };
 
-  const savePatients = () => {
+  const savePatients = (event) => {
+    event.preventDefault();
+    console.log("holita otra caracola")
+    console.log(event.target)
     var data = {
       name: patients.name,
       surname: patients.surname,
       secondSurname: patients.secondSurname,
       dni: patients.dni,
-      history: patients.history
+      history: patients.history,
+      image: event.target.image.files[0]
     };
 
     PatientsDataService.create(data)
@@ -47,7 +53,7 @@ const AddPatients = () => {
       .catch(e => {
         console.log(e);
       });
-      Navigate('/patients');
+    Navigate('/patients');
   };
 
   const newPatients = () => {
@@ -72,51 +78,51 @@ const AddPatients = () => {
         ) : (
 
           <div className="container">
+            <form onSubmit={savePatients} >
+              <div className="form-group">
+                <label htmlFor="name">Name:</label>
+                <input type="text" className="form-control" id="name"
+                  required value={patients.name} onChange={handleInputChange} name="name"
+                  minLength={3} maxLength={40} />
+              </div>
 
-            <div className="form-group">
-              <label htmlFor="name">Name:</label>
-              <input type="text" className="form-control" id="name"
-                required value={patients.name} onChange={handleInputChange} name="name"
-                minLength={3} maxLength={40} />
-            </div>
+              <div className="form-group">
+                <label htmlFor="surname">Surname:</label>
+                <input type="text" className="form-control" id="surname"
+                  requiredvalue={patients.surname} onChange={handleInputChange} name="surname"
+                  minLength={3} maxLength={40} />
+              </div>
 
-            <div className="form-group">
-              <label htmlFor="surname">Surname:</label>
-              <input type="text" className="form-control" id="surname"
-                requiredvalue={patients.surname} onChange={handleInputChange} name="surname"
-                minLength={3} maxLength={40} />
-            </div>
+              <div className="form-group">
+                <label htmlFor="secondSurname">Second surname:</label>
+                <input type="text" className="form-control" id="surname"
+                  requiredvalue={patients.secondSurname} onChange={handleInputChange} name="secondSurname"
+                  minLength={3} maxLength={40} />
+              </div>
 
-            <div className="form-group">
-              <label htmlFor="secondSurname">Second surname:</label>
-              <input type="text" className="form-control" id="surname"
-                requiredvalue={patients.secondSurname} onChange={handleInputChange} name="secondSurname"
-                minLength={3} maxLength={40} />
-            </div>
+              <div className="form-group">
+                <label className="label" htmlFor="dni">Dni:</label>
+                <input type="text" className="form-control" id="dni"
+                  required value={patients.dni} onChange={handleInputChange} name="dni"
+                  maxLength={9} />
+              </div>
 
-            <div className="form-group">
-              <label className="label" htmlFor="dni">Dni:</label>
-              <input type="text" className="form-control" id="dni"
-                required value={patients.dni} onChange={handleInputChange} name="dni"
-                maxLength={9} />
-            </div>
+              <div className="form-group" >
+                <label id="label" htmlFor="history">History: </label>
+                <input type="text" className="form-control-history" id="history"
+                  required value={patients.history} onChange={handleInputChange} name="history" />
+              </div>
 
-            <div className="form-group" >
-              <label id="label" htmlFor="history">History: </label>
-              <input type="text" className="form-control-history" id="history"
-                required value={patients.history} onChange={handleInputChange} name="history" />
-            </div>
+              <div className="form-group">
+                <input type="file"
+                  id="image" name="image"
+                  accept="image/png, image/jpeg" />
+              </div>
 
-            {/* <div className="form-group">
-              <input type="file"
-                id="image" name="image"
-                accept="image/png, image/jpeg" />
-            </div> */}
-
-            <button onClick={savePatients} className="btn-submit">
-              Submit
-            </button>
-
+              <button type="submit" className="btn-submit">
+                Submit
+              </button>
+            </form>
           </div>
         )}
       </div>

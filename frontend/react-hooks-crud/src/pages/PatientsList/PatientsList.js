@@ -147,13 +147,13 @@ const PatientsList = () => {
                   </div>
 
 
-                  <div class="edit">
+                  <div className="edit">
                     <Link
                       to={"/patients/" + currentPatient.id}>
                       <FaIcons.FaEdit />
                     </Link>
                   </div>
-                  {/* <div class="edit">
+                  {/* <div className="edit">
                     <Link 
                       to={"/prescriptionsList"}>
                       <FaIcons.FaEdit />

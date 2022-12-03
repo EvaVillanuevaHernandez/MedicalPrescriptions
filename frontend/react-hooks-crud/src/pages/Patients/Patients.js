@@ -51,12 +51,27 @@ const Patients = props => {
   };
 
 
-  const updatePatient = () => {
-    PatientsDataService.update(currentPatient.id, currentPatient)
+  const updatePatient = (event) => {
+    event.preventDefault();
+    console.log("hola holita caracolita")
+    let datitos = event.target;
+
+    let updatedPatient = {
+      id: currentPatient.id,
+      name: datitos["name"].value,
+      surname: datitos["surname"].value,
+      secondSurname: datitos["secondSurname"].value,
+      dni: datitos["dni"].value,
+      history: datitos["history"].value,
+      image: currentPatient.image,
+      typeImage: currentPatient.typeImage
+    }
+
+    PatientsDataService.update(updatedPatient.id, updatedPatient)
       .then(response => {
         console.log(response.data);
         setMessage("The Patient was updated successfully!");
-        
+
         navigate("/patients");
 
       })
@@ -78,7 +93,7 @@ const Patients = props => {
       });
   };
 
- 
+
   return (
     <>
       <Header />
@@ -90,15 +105,15 @@ const Patients = props => {
       <div className="form">
         {currentPatient ? (
           <div>
-            <Form >
+            <Form onSubmit={updatePatient}>
               <div className="container">
                 <Row className="mb-3">
 
-                  {/* <Form.Group as={Col} md="4">
+                  <Form.Group as={Col} md="4">
                     <img src={`data:${currentPatient.typeImage};base64,${currentPatient.image}`}
                       alt=" " className="patient-image" onChange={handleInputChange} />
-                  </Form.Group> */}
-                  
+                  </Form.Group>
+
 
                   <Form.Group as={Col} md="4"
                     className="position-relative">
@@ -123,20 +138,20 @@ const Patients = props => {
                       value={currentPatient.surname}
                       onChange={handleInputChange} />
                   </Form.Group>
-                  </Row>
-                  <Form.Group as={Col} md="4"
-                    className="position-relative">
+                </Row>
+                <Form.Group as={Col} md="4"
+                  className="position-relative">
 
-                    <Form.Label>Second surname:</Form.Label>
-                    <Form.Control
-                      type="text"
-                      className="form-control"
-                      id="secondSurname"
-                      name="secondSurname"
-                      value={currentPatient.secondSurname}
-                      onChange={handleInputChange} />
-                  </Form.Group>
-               
+                  <Form.Label>Second surname:</Form.Label>
+                  <Form.Control
+                    type="text"
+                    className="form-control"
+                    id="secondSurname"
+                    name="secondSurname"
+                    value={currentPatient.secondSurname}
+                    onChange={handleInputChange} />
+                </Form.Group>
+
 
                 <Form.Group as={Col} md="4"
                   className="position-relative">
@@ -162,27 +177,23 @@ const Patients = props => {
                     value={currentPatient.history}
                     onChange={handleInputChange}
                   />
-                </Form.Group> 
+                </Form.Group>
 
               </div>
-              
-              
+
+
               <button className="delete-button" onClick={deletePatient}>
-                    <BiIcons.BiTrashAlt /> Delete
-                  </button>
-                  <p>{message}</p>
+                <BiIcons.BiTrashAlt /> Delete
+              </button>
+              <p>{message}</p>
 
-                  <button type="submit" className="update-button" onClick={updatePatient} 
-                  >
-                    <BiIcons.BiEditAlt />Update    
-                  </button>
-                  
-                  <p>{message}</p>
+              <button type="submit" className="update-button" >
 
-              
+                {/* onClick={updatePatient} */}
+                <BiIcons.BiEditAlt />Update
+              </button>
+              <p>{message}</p>
             </Form>
-
-
           </div>
         ) : (
           <div id="elipse5">

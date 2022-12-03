@@ -64,7 +64,7 @@ public class PatientController {
 	}*/
 
 	@PostMapping("/patients")
-	public void post(Patient patient,@RequestParam(value = "file",required = false)MultipartFile image)throws IOException{
+	public void post(Patient patient,@RequestParam(value = "file",required = false) MultipartFile image)throws IOException{
 		if(image!=null){
 			String randomID =UUID.randomUUID().toString();
 			String filename = randomID.concat(randomID+image.getOriginalFilename().substring(image.getOriginalFilename().lastIndexOf(".")));
@@ -73,7 +73,7 @@ public class PatientController {
 			patient.setTypeImg(image.getContentType());
 			patient.setImage(ImageUtility.compressImage(image.getBytes()));
 		}
-		
+
 		patientService.post(patient);
 		
 	}
@@ -87,13 +87,15 @@ public class PatientController {
 
 	
 	@PutMapping("/patients/{id}")
-	public void put(Patient patient,@PathVariable(value = "id")int id,@RequestParam("file") MultipartFile image)throws IOException{
-		String randomID=UUID.randomUUID().toString();
-		String filename = randomID.concat(randomID + (image.getOriginalFilename().lastIndexOf(".")));
-		
-		patient.setNameImg(filename);
-		patient.setTypeImg(image.getContentType());
-		patient.setImage(ImageUtility.compressImage(image.getBytes()));
+	public void put(Patient patient,@PathVariable(value = "id")int id,@RequestParam(value = "file", required = false) MultipartFile image)throws IOException{
+		if(image!=null) {
+			String randomID = UUID.randomUUID().toString();
+			String filename = randomID.concat(randomID + (image.getOriginalFilename().lastIndexOf(".")));
+
+			patient.setNameImg(filename);
+			patient.setTypeImg(image.getContentType());
+			patient.setImage(ImageUtility.compressImage(image.getBytes()));
+		}
 		patientService.put(patient, id);
 	}
 	
