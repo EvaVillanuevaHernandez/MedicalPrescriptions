@@ -40,21 +40,15 @@ const remove = id => {
   return http.delete(`/patients/${id}`);
 };
 
-const removeAll = () => {
-  return http.delete(`/patients`);
-};
 
-// const findByPatientName = name => {
-//   return http.get(`/patients?name${name}`);
-// };
+
 
 const PatientService = {
   getAll,
   get,
   create,
   update,
-  remove,
-  removeAll
+  remove
 };
 
 export default PatientService;

@@ -10,23 +10,25 @@
   display: flex;
   align-self: flex-start;
   flex-flow: row;
+  border-radius: 1ex;
+  border: 2px solid #aba673;
   
 }
 .search-bar{
-  display: flex;
-  align-self: flex-start;
+ border-radius: 1ex;
   flex-flow: row;
-  border-radius: 1ex;
   background-color: #DEE7E5;
-  border: 1px solid #aba673;
-  width: 750px;
-}
-.search-button{
   border: none;
-  background-color: #DEE7E5;
+  width: 790px;
 }
-.new-patient{
-  margin-top: 10px;
+
+.new-prescription{
+  margin-top: 20px;
+}
+.button-new-prescription{
+  border-radius: 1ex;
+  border: 1px solid #9F73AB;
+  background-color: #DEE7E5; 
 }
 
 .remove-button{
@@ -59,7 +61,7 @@
 }
 
 .info{
-  border: 2px solid #9F73AB;
+  border: 1px solid #9F73AB;
   border-radius: 1ex;
   justify-content: flex-start ;
   padding: 20px;

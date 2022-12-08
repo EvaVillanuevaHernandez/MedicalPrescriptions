@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { IconContext } from 'react-icons';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
-
+import swal from 'sweetalert';
 import Header from "../../components/Header/Header";
 import PatientsDataService from "../../services/PatientService";
 
@@ -38,38 +38,28 @@ const PatientsList = () => {
       });
   };
 
-  const refreshList = () => {
-    retrievePatients();
-    setCurrentPatient(null);
-    setCurrentIndex(-1);
-  };
-
   const setActivePatient = (patient, index) => {
     setCurrentPatient(patient);
     setCurrentIndex(index);
+  
   };
 
-  const removeAllPatients = () => {
-    PatientsDataService.removeAll()
-      .then(response => {
-        console.log(response.data);
-        refreshList();
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  };
 
-  const findByPatientName = () => {
-    PatientsDataService.findByPatientName(searchPatientName)
-      .then(response => {
-        setPatients(response.data);
-        console.log(response.data);
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  };
+
+  // const showAlert = () => {
+  //   swal({
+  //     title:"Eliminar",
+  //     text:"Are you sure you want to delete all patients?",
+  //     icon:"warning",
+  //     buttons:["No", "Sí"]
+  //   }).then(respuesta=>{
+  //     if(respuesta == true){
+  //     swal({text: "All patients ares deleted!",
+  //     icon:"success"})
+  //     }
+  //   })
+      
+  // };
 
   return (
 
@@ -79,25 +69,26 @@ const PatientsList = () => {
       <IconContext.Provider value={{ color: '#231F20' }}>
         <div className="patients">
           <div className="col-md-6">
-            <h1 className="title">Patients</h1>
+            <h4 className="title">Patients</h4>
 
             <div className="container-search-bar">
-              <input className="form-control-patients" type="text"
+              <input className="search-bar" type="text"
                 placeholder="Search by patient name"
                 value={searchPatientName}
-                onChange={onChangeSearchPatientName} />   
+                onChange={onChangeSearchPatientName} />
+              <i><AiIcons.AiOutlineSearch /></i>
             </div>
 
             <div className="new-patient">
               <Link to="/AddPatient">
-                <button className="button-new-patient" type="button"><AiIcons.AiOutlinePlus /> New patient </button>
+                <button className="button-new-patient" type="button"><AiIcons.AiOutlinePlus /> Patient </button>
               </Link>
             </div>
             <br />
             <div className="general">
               {
                 patients &&
-                patients.filter(patient => patient.name.search(searchPatientName) !== -1).map((p, index) => (
+                patients.filter(patient => patient.name.toLowerCase().search(searchPatientName.toLowerCase()) !== -1).map((p, index) => (
                   <GroupItem active={index === currentIndex}
                     text={`${p.name} ${p.surname}`}
                     action={() => setActivePatient(p, index)}
@@ -148,20 +139,14 @@ const PatientsList = () => {
                       <FaIcons.FaEdit />
                     </Link>
                   </div>
-                  {/* <div className="edit">
-                    <Link 
-                      to={"/prescriptionsList"}>
-                      <FaIcons.FaEdit />
-                    </Link>
-                  </div> */}
+              
                 </div>
               ) : (
                 <></>
               )}
-            </div>
-            <button className="remove-button" onClick={removeAllPatients} >
-              Remove all
-            </button>
+          
+            </div>   
+              
           </div>
 
         </div>

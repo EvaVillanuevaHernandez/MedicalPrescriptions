@@ -4,6 +4,7 @@ import * as FaIcons from 'react-icons/fa';
 import './GroupItem.scss';
 const GroupItem = ({active, text, action, index})=> {
 
+    
     return (
         <div className={"group-item " + (active ? "active" : "")} onClick={() => action()} key={index}>
             <div>

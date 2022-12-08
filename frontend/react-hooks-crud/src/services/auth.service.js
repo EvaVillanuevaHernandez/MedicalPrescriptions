@@ -3,18 +3,23 @@ import axios from "axios";
 const API_URL = "http://localhost:8080/api/auth/";
 
 const register = (username, email, password) => {
+  const encodedPassword = btoa(password);
   return axios.post(API_URL + "signup", {
     username,
     email,
     password,
+    // password: encodedPassword,
   });
 };
 
 const login = (username, password) => {
+  const encodedPassword = btoa(password);
+
   return axios
     .post(API_URL + "signin", {
       username,
       password,
+      // password: encodedPassword,
     })
     .then((response) => {
       if (response.data.accessToken) {

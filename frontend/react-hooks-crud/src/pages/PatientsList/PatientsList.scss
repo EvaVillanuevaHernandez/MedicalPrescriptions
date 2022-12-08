@@ -1,33 +1,25 @@
 .patients{
-    margin-left:  50px;
+    margin-left:  60px;
     margin-right: 50px;
   }
   .title{
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
-.container-search-bar{
-  display: flex;
-  justify-content: flex-start;
-  
-}
-
-.form-control-patients{
-  display: flex;
-  border-radius: 1ex;
-  background-color: #DEE7E5;
-  border: 1px solid #ab8f3b;
-  width: 90%;
-  height: 30px;
-}
-//  .search-bar{
-//   display: flex;
-//   height: 20px;
-//   background-color: #DEE7E5; 
-//   border-radius: 1ex;
-//   width: 100ex;
-//   height: 30px;
-//   margin-right: 5px;
-//  }
+  .container-search-bar{
+    display: flex;
+    align-self: flex-start;
+    flex-flow: row;
+    border-radius: 1ex;
+    border: 2px solid #aba673;
+    
+  }
+  .search-bar{
+   border-radius: 1ex;
+    flex-flow: row;
+    background-color: #DEE7E5;
+    border: none;
+    width: 790px;
+  }
 
  .search-button{
   border: 1px solid #706e6e;
@@ -35,7 +27,7 @@
   background-color: #DEE7E5; 
  }
   .new-patient{
-    margin-top: 10px;
+    margin-top: 20px;
   }
   .button-new-patient{
     border-radius: 1ex;

@@ -102,18 +102,16 @@ const Patients = props => {
         <p className="patient-name">{currentPatient.name}</p>
       </div>
 
-      <div className="form">
+      <div className="form-p">
         {currentPatient ? (
           <div>
             <Form onSubmit={updatePatient}>
-              <div className="container">
+              <div className="container-p">
                 <Row className="mb-3">
-
                   <Form.Group as={Col} md="4">
                     <img src={`data:${currentPatient.typeImage};base64,${currentPatient.image}`}
                       alt=" " className="patient-image" onChange={handleInputChange} />
                   </Form.Group>
-
 
                   <Form.Group as={Col} md="4"
                     className="position-relative">
@@ -123,9 +121,7 @@ const Patients = props => {
                       id="name" name="name"
                       value={currentPatient.name}
                       onChange={handleInputChange} />
-
                   </Form.Group>
-
                   <Form.Group as={Col} md="4"
                     className="position-relative">
 
@@ -139,9 +135,10 @@ const Patients = props => {
                       onChange={handleInputChange} />
                   </Form.Group>
                 </Row>
+
+                <Row className="mb-3">           
                 <Form.Group as={Col} md="4"
                   className="position-relative">
-
                   <Form.Label>Second surname:</Form.Label>
                   <Form.Control
                     type="text"
@@ -152,10 +149,8 @@ const Patients = props => {
                     onChange={handleInputChange} />
                 </Form.Group>
 
-
                 <Form.Group as={Col} md="4"
                   className="position-relative">
-
                   <Form.Label>Dni:</Form.Label>
                   <Form.Control
                     type="text"
@@ -166,6 +161,7 @@ const Patients = props => {
                     onChange={handleInputChange}
                   />
                 </Form.Group>
+                </Row>
 
                 <Form.Group className="position-relative mb-3">
                   <Form.Label>History:</Form.Label>

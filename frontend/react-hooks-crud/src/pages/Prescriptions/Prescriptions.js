@@ -78,7 +78,7 @@ const Prescriptions = props => {
       <div className="form-prescriptions">
         {currentPrescriptions ? (
           <Form >
-          <div className="container">
+          <div className="container-pr">
             <Row className="mb-3">
               <Form.Group as={Col} md="4"
                 className="position-relative">
@@ -104,9 +104,9 @@ const Prescriptions = props => {
                  value={currentPrescriptions.doctorName}
                  onChange={handleInputChange}/>
               </Form.Group>
-
               </Row>
 
+              <Row className="mb-3">
               <Form.Group as={Col} md="4"
                 className="position-relative">
 
@@ -134,6 +134,7 @@ const Prescriptions = props => {
                onChange={handleInputChange}
               />
             </Form.Group>
+            </Row>
 
             <Form.Group className="position-relative mb-3">
               <Form.Label>Posology:</Form.Label>

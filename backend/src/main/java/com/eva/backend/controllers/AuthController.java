@@ -1,6 +1,7 @@
 package com.eva.backend.controllers;
 
 
+import java.util.Base64;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -55,6 +56,8 @@ public class AuthController {
 
 	  @PostMapping("/signin")
 	  public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
+//		  byte[] password = Base64.getDecoder().decode(loginRequest.getPassword());
+//		  String decodePassword = new String(password);
 
 	    Authentication authentication = authenticationManager.authenticate(
 	        new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
@@ -76,6 +79,9 @@ public class AuthController {
 
 	  @PostMapping("/signup")
 	  public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
+//		  byte[] password = Base64.getDecoder().decode(signUpRequest.getPassword());
+//		  String decodePassword = new String(password);
+
 	    if (userRepository.existsByUsername(signUpRequest.getUsername())) {
 	      return ResponseEntity
 	          .badRequest()
