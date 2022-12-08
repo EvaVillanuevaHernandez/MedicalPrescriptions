@@ -82,19 +82,14 @@ const PatientsList = () => {
             <h1 className="title">Patients</h1>
 
             <div className="container-search-bar">
-
-              <input className="form-control" type="text"
+              <input className="form-control-patients" type="text"
                 placeholder="Search by patient name"
                 value={searchPatientName}
-                onChange={onChangeSearchPatientName} />
-
-              <button className="search-button" type="button" onClick={findByPatientName}>
-                <FaIcons.FaSearch />
-              </button>
+                onChange={onChangeSearchPatientName} />   
             </div>
 
             <div className="new-patient">
-              <Link to="/AddPatients">
+              <Link to="/AddPatient">
                 <button className="button-new-patient" type="button"><AiIcons.AiOutlinePlus /> New patient </button>
               </Link>
             </div>
@@ -102,7 +97,7 @@ const PatientsList = () => {
             <div className="general">
               {
                 patients &&
-                patients.map((p, index) => (
+                patients.filter(patient => patient.name.search(searchPatientName) !== -1).map((p, index) => (
                   <GroupItem active={index === currentIndex}
                     text={`${p.name} ${p.surname}`}
                     action={() => setActivePatient(p, index)}

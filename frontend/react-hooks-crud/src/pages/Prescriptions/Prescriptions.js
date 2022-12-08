@@ -146,9 +146,8 @@ const Prescriptions = props => {
                  onChange={handleInputChange}
               />
             </Form.Group> 
-
-          </div>
-          
+          </div>   
+                
           <button className="delete-button" onClick={deletePrescriptions}>
                 <BiIcons.BiTrashAlt />  Delete
               </button>
@@ -158,9 +157,7 @@ const Prescriptions = props => {
               >
                 <BiIcons.BiEditAlt />Update
                 <p>{message}</p>
-              </button>
-              
-             
+              </button>                  
         </Form>
         ) : (
           <div>

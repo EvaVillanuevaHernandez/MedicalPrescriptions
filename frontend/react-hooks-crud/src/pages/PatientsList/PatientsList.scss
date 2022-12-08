@@ -8,17 +8,26 @@
 .container-search-bar{
   display: flex;
   justify-content: flex-start;
+  
 }
- .search-bar{
+
+.form-control-patients{
   display: flex;
-  height: 20px;
-  border: px solid #cac480;
-  background-color: #DEE7E5; 
   border-radius: 1ex;
-  width: 100ex;
+  background-color: #DEE7E5;
+  border: 1px solid #ab8f3b;
+  width: 90%;
   height: 30px;
-  margin-right: 5px;
- }
+}
+//  .search-bar{
+//   display: flex;
+//   height: 20px;
+//   background-color: #DEE7E5; 
+//   border-radius: 1ex;
+//   width: 100ex;
+//   height: 30px;
+//   margin-right: 5px;
+//  }
 
  .search-button{
   border: 1px solid #706e6e;
@@ -30,7 +39,7 @@
   }
   .button-new-patient{
     border-radius: 1ex;
-    border: 2px solid #9F73AB;
+    border: 1px solid #9F73AB;
     background-color: #DEE7E5; 
   }
   .remove-button{
@@ -38,15 +47,7 @@
     border: 2px solid #9F73AB;
     background-color: #DEE7E5; 
   }
-  .group-item{
-    display:flex;
-    flex-flow: column wrap;
-    border: 1px solid #9F73AB;
-    border-radius: 1ex;
-    justify-content: space-between ;
-    padding: 20px;
-    margin-bottom: 10px;
-  }
+
   .eye{
     display: flex;
     justify-content: flex-end;

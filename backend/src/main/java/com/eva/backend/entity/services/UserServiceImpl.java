@@ -1,6 +1,7 @@
 package com.eva.backend.entity.services;
 import java.util.List;
 
+import com.eva.backend.entity.dao.IDoctorDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,9 @@ public class UserServiceImpl implements IUserService {
 
 	@Autowired
 	private IUserDao userDao;
+
+	@Autowired
+	private IDoctorDao doctorDao;
 
 	@Override
 	public User get (int id) {
@@ -45,4 +49,13 @@ public class UserServiceImpl implements IUserService {
 		userDao.deleteById(id);
 		
 	}
+	@Override
+	public void DtoU(int idDoctor,int idUser) {
+		userDao.findById(idUser).ifPresent((y)->{
+			doctorDao.findById(idDoctor).ifPresent((x)->{
+				y.setDoctor(x);
+				userDao.save(y);
+			});
+		});
+}
 }

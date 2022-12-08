@@ -35,9 +35,9 @@ const remove = id => {
 const removeAll = () => {
   return http.delete(`/prescriptions`);
 };
-const findByPatientName = patientName => {
-  return http.get(`/prescriptions?patientName=${patientName}`);
-};
+// const findByPatientName = patientName => {
+//   return http.get(`/prescriptions?patientName=${patientName}`);
+// };
 
 const PrescriptionsService = {
   getAll,
@@ -45,8 +45,7 @@ const PrescriptionsService = {
   create,
   update,
   remove,
-  removeAll,
-  findByPatientName
+  removeAll
 };
 
 export default PrescriptionsService;

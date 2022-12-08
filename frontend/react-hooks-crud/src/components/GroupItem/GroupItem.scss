@@ -1,0 +1,9 @@
+.group-item{
+    display: flex;
+    flex-flow: column wrap;
+    border: 2px solid #9F73AB;
+    border-radius: 1ex;
+    justify-content: space-between;
+    padding: 20px;
+    margin-bottom: 10px;
+}

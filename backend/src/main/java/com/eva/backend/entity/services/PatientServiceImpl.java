@@ -51,19 +51,17 @@ public class PatientServiceImpl implements IPatientService {
 	}
 	
 	@Override
-	public void PtoD(int idD,int idP) {
-		patientDao.findById(idP).ifPresent((y)->{
-		doctorDao.findById(idD).ifPresent((x)->{
+	public void DtoP(int idDoctor, int idPatient) {
+		patientDao.findById(idPatient).ifPresent((y)->{
+		doctorDao.findById(idDoctor).ifPresent((x)->{
 			y.setDoctor(x);
 			patientDao.save(y);
 		});
-		});
+	});
 }
-	/*@Override
-	public Patient get(String name) {
-		return patientDao.findByName(name).get();
-		}*/
-	}
+
+
+}
 	
 
 

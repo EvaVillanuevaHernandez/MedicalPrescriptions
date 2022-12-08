@@ -13,17 +13,18 @@ export const SidebarData = [
     
   },
   {
-    title: 'Profile',
-    path: '/profile',
-    icon: <CgIcons.CgProfile />,
-    cName: 'nav-text'
-  },
-  {
     title: 'Prescriptions',
     path: '/prescriptionsList',
     icon: <FaIcons.FaPrescriptionBottleAlt />,
     cName: 'nav-text'
   },
+  {
+    title: 'Profile',
+    path: '/profile',
+    icon: <CgIcons.CgProfile />,
+    cName: 'nav-text'
+  },
+ 
   {
     title: 'Settings',
     path: '/settings',

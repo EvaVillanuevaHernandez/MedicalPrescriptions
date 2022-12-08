@@ -1,0 +1,64 @@
+
+  .add-form{
+    display:relative;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    margin-top: 20px;
+    width:50%;
+    height:80%;
+    position:relative;
+    border: 1px solid #A88A1E;
+    border-radius: 1ex;
+  }
+  
+  .add-presc{
+    margin-left: 20px;
+    font-family: 'Arial';
+  }
+  .container{
+    margin-top: 30px;
+    margin-left: 20px;
+  }
+
+  .submit-form-presc{
+  
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    margin-top: 20px;
+    width: 50%;
+    height: 80%;
+    position: relative;
+    border: 1px solid #A88A1E;
+    border-radius: 1ex;
+  }
+  
+  
+  .btn-add-presc{
+    border-radius: 1ex;
+    border: 2px solid #9F73AB;
+    background-color: #DEE7E5;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+  }
+  .btn-submit-presc {
+    border-radius: 1ex;
+    border: 2px solid #9F73AB;
+    background-color: #DEE7E5;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    margin-left: 15px;
+    
+  }
+  
+  #elipse5 {
+    z-index: -1;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+  
+  }
+  
+  

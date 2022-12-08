@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { Navigate } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import PatientsDataService from "../../services/PatientService";
-import './AddPatients.scss';
+import './AddPatient.scss';
 
 
-const AddPatients = () => {
+const AddPatient = () => {
   const initialPatientsState = {
     id: null,
     name: "",
@@ -16,30 +16,39 @@ const AddPatients = () => {
     image: null
   };
 
-  const [patients, setPatients] = useState(initialPatientsState);
+  const [patient, setPatient] = useState(initialPatientsState);
   const [submitted, setSubmitted] = useState(false);
+
+  const required = (value) => {
+    if (!value) {
+      return (
+        <div className="alert alert-danger" role="alert">
+          This field is required!
+        </div>
+      );
+    }
+  };
 
   const handleInputChange = event => {
     const { name, value } = event.target;
-    setPatients({ ...patients, [name]: value });
+    setPatient({ ...patient, [name]: value });
   };
 
   const savePatients = (event) => {
     event.preventDefault();
-    console.log("holita otra caracola")
     console.log(event.target)
     var data = {
-      name: patients.name,
-      surname: patients.surname,
-      secondSurname: patients.secondSurname,
-      dni: patients.dni,
-      history: patients.history,
+      name: patient.name,
+      surname: patient.surname,
+      secondSurname: patient.secondSurname,
+      dni: patient.dni,
+      history: patient.history,
       image: event.target.image.files[0]
     };
 
     PatientsDataService.create(data)
       .then(response => {
-        setPatients({
+        setPatient({
           id: response.data.id,
           name: response.data.name,
           surname: response.data.surname,
@@ -57,7 +66,7 @@ const AddPatients = () => {
   };
 
   const newPatients = () => {
-    setPatients(initialPatientsState);
+    setPatient(initialPatientsState);
     setSubmitted(false);
   };
 
@@ -69,50 +78,50 @@ const AddPatients = () => {
       <div className="add-form" >
         {submitted ? (
           <div className="add">
-            <button className="btn-add" onClick={newPatients}>
+            <button className="btn-add" onClick={newPatients} >
               Add
             </button>
             <h4 className="add">You submitted successfully, click add to finish!</h4>
-
           </div>
         ) : (
 
           <div className="container">
             <form onSubmit={savePatients} >
+
               <div className="form-group">
                 <label htmlFor="name">Name:</label>
                 <input type="text" className="form-control" id="name"
-                  required value={patients.name} onChange={handleInputChange} name="name"
-                  minLength={3} maxLength={40} />
+                  required value={patient.name} onChange={handleInputChange} name="name"
+                  minLength={3} maxLength={40} validations= {[required]}/>
               </div>
 
               <div className="form-group">
                 <label htmlFor="surname">Surname:</label>
                 <input type="text" className="form-control" id="surname"
-                  requiredvalue={patients.surname} onChange={handleInputChange} name="surname"
-                  minLength={3} maxLength={40} />
+                  requiredvalue={patient.surname} onChange={handleInputChange} name="surname"
+                  minLength={3} maxLength={40} validations={[required]} />
               </div>
 
               <div className="form-group">
                 <label htmlFor="secondSurname">Second surname:</label>
                 <input type="text" className="form-control" id="surname"
-                  requiredvalue={patients.secondSurname} onChange={handleInputChange} name="secondSurname"
-                  minLength={3} maxLength={40} />
+                  requiredvalue={patient.secondSurname} onChange={handleInputChange} name="secondSurname"
+                  minLength={3} maxLength={40} validations={[required]}/>
               </div>
 
               <div className="form-group">
                 <label className="label" htmlFor="dni">Dni:</label>
                 <input type="text" className="form-control" id="dni"
-                  required value={patients.dni} onChange={handleInputChange} name="dni"
-                  maxLength={9} />
+                  required value={patient.dni} onChange={handleInputChange} name="dni"
+                  maxLength={9} validations={[required]} />
               </div>
 
               <div className="form-group" >
                 <label id="label" htmlFor="history">History: </label>
                 <input type="text" className="form-control-history" id="history"
-                  required value={patients.history} onChange={handleInputChange} name="history" />
+                  required value={patient.history} onChange={handleInputChange} name="history" />
               </div>
-
+               <br/>
               <div className="form-group">
                 <input type="file"
                   id="image" name="image"
@@ -134,4 +143,4 @@ const AddPatients = () => {
   );
 };
 
-export default AddPatients;
+export default AddPatient;

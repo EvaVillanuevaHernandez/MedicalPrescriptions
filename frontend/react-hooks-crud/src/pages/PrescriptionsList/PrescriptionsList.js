@@ -3,11 +3,10 @@ import { Link } from "react-router-dom";
 import { IconContext } from 'react-icons';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
-
 import Header from "../../components/Header/Header";
 import PrescriptionsDataService from "../../services/PrescriptionsService";
-import "./PrescriptionsList.scss"
 import GroupItem from "../../components/GroupItem/GroupItem";
+import "./PrescriptionsList.scss"
 
 const PrescriptionsList = () => {
   const [prescriptions, setPrescriptions] = useState([]);
@@ -35,70 +34,39 @@ const PrescriptionsList = () => {
       });
   };
 
-  const refreshList = () => {
-    retrievePrescriptions();
-    setCurrentPrescriptions(null);
-    setCurrentIndex(-1);
-  };
-
   const setActivePrescriptions = (prescriptions, index) => {
     setCurrentPrescriptions(prescriptions);
     setCurrentIndex(index);
+   
   };
 
-  const removeAllPrescriptions = () => {
-    PrescriptionsDataService.removeAll()
-      .then(response => {
-        console.log(response.data);
-        refreshList();
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  };
-
-  const findByPatientName = () => {
-    PrescriptionsDataService.findByPatientName(searchPatientName)
-      .then(response => {
-        setPrescriptions(response.data);
-        console.log(response.data);
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  };
-
+ 
   return (
-
     <>
-       
       <style>{'body { background-color: #DEE7E5 ; }'}</style>
       <IconContext.Provider value={{ color: '#231F20' }}>
-
         <Header />
         <div className="prescriptions">
           <div className="col-md-6">
             <h4 className="title">Prescriptions</h4>
+
             <div className="container-search-bar">
-              <input className="search-bar" type="text" placeholder="Search by patient name" value={searchPatientName}
-                onChange={onChangeSearchPatientName} />
-              <button className="search-button" type="button" onClick={findByPatientName}>
-                <FaIcons.FaSearch />
-              </button>
+              <input className="search-bar" type="text" placeholder=" Search by patient name" value={searchPatientName}
+                onChange={onChangeSearchPatientName}
+              />
             </div>
 
-            
-          <div className="new-patient">
-              <Link to="/AddPrescriptions">
+            <div className="new-patient">
+              <Link to="/AddPrescription">
                 <button className="button-new-patient" type="button"><AiIcons.AiOutlinePlus />Prescription </button>
               </Link>
             </div>
-            
+
             <br />
-            <div className="general">      
-               {
+            <div className="general">
+              {
                 prescriptions &&
-                prescriptions.map((p, index) => (
+                prescriptions.filter(prescriptions => prescriptions.patientName.toLowerCase().search(searchPatientName.toLowerCase()) !== -1).map((p, index) => (
                   <GroupItem active={index === currentIndex}
                     text={`${p.patientName}`}
                     action={() => setActivePrescriptions(p, index)}
@@ -106,7 +74,7 @@ const PrescriptionsList = () => {
                 ))
               }
             </div>
-            <div className="col-md-6">
+             <div className="info">
               {currentPrescriptions ? (
                 <div>
                   <div>
@@ -145,18 +113,14 @@ const PrescriptionsList = () => {
                   >
                     <FaIcons.FaEdit />
                   </Link>
-                  
+
                 </div>
               ) : (
                 <></>
               )}
 
-            </div>
-            <button className="remove-button" onClick={removeAllPrescriptions} >
-              Remove all 
-            </button>
+            </div> 
           </div>
-
 
         </div>
       </IconContext.Provider>

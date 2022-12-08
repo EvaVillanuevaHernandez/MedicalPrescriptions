@@ -2,6 +2,7 @@ package com.eva.backend.entity.services;
 
 
 import com.eva.backend.entity.dao.IDoctorDao;
+import com.eva.backend.entity.dao.IPatientDao;
 import com.eva.backend.entity.dao.IPrescriptionDao;
 
 import com.eva.backend.entity.models.Prescription;
@@ -20,6 +21,9 @@ private IPrescriptionDao prescriptionDao;
 
 @Autowired
 private IDoctorDao doctorDao;
+
+	@Autowired
+	private IPatientDao patientDao;
 
 @Override
 public Prescription get (int id) {
@@ -62,6 +66,16 @@ public void DtoP(int idDoctor,int idPrescription) {
 	});
 	});
 }
+
+	@Override
+	public void PtoP(int idPatient,int idPrescription) {
+		prescriptionDao.findById(idPrescription).ifPresent((y)->{
+			patientDao.findById(idPatient).ifPresent((x)->{
+				y.setPatient(x);
+				prescriptionDao.save(y);
+			});
+		});
+	}
 //FK
 /*
 @Override

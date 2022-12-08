@@ -77,9 +77,7 @@ public class Patient implements Serializable {
 	public void setPrescriptions(List<Prescription> prescriptions) {
 		this.prescriptions = prescriptions;
 	}
-	
 
-	
 	public String getDni() {
 		return dni;
 	}

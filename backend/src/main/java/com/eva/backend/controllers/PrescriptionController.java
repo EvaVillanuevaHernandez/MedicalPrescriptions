@@ -47,9 +47,14 @@ public void delete(@PathVariable(value="id")int id) {
 }
 
 @PostMapping("/doctors/{idDoctor}/prescriptions/{idPrescription}")
-public void DtoP(@PathVariable(value="idDoctor") int idDoctor,@PathVariable(value="idPrescription")int idPrescription) {
+public void DtoP(@PathVariable(value="idDoctor") int idDoctor,
+				 @PathVariable(value="idPrescription")int idPrescription) {
 	prescriptionService.DtoP(idDoctor,idPrescription);
 }
+@PostMapping("/patients/{idPatient}/prescriptions/{idPrescription}")
+public void PtoP(@PathVariable(value="idPatient") int idPatients,
+				 @PathVariable(value="idPrescription")int idPrescription) {
+
 //FK
 
 /*
@@ -58,4 +63,4 @@ private List<Prescription> findAllFromId(@PathVariable("id") int id){
 	System.out.println(id);
 	return prescriptionService.findAllFromId(id);
 }*/
-}
+}}

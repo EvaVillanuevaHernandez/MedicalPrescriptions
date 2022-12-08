@@ -79,12 +79,6 @@ public class PatientController {
 		
 	}
 
-//	@PostMapping("/patients1")
-//	public void post(Patient patient)throws IOException{
-//
-//		patientService.post(patient);
-//
-//	}
 
 	
 	@PutMapping("/patients/{id}")
@@ -106,8 +100,8 @@ public class PatientController {
 	
 	}
 	
-	@PostMapping("/doctors/{idD}/patients/{idP}")
-	public void DtoP(@PathVariable(value="idD") int idD,@PathVariable(value="idP")int idP) {
-		patientService.PtoD(idD,idP);
+	@PostMapping("/doctors/{idDoctor}/patients/{idPatient}")
+	public void DtoP(@PathVariable(value="idDoctor") int idDoctor,@PathVariable(value="idPatient")int idPatient) {
+		patientService.DtoP(idDoctor,idPatient);
 	}
 }

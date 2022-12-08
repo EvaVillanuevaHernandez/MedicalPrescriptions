@@ -45,4 +45,11 @@ public void put(User user,@PathVariable(value = "id")int id){
 public void delete(@PathVariable(value="id")int id) {
 	userService.delete(id);
 }
+
+
+@PostMapping("/doctors/{idDoctor}/users/{idUser}")
+public void DtoU(@PathVariable(value="idDoctor") int idDoctor,@PathVariable(value="idUser")int idUser) {
+	userService.DtoU(idDoctor,idUser);
+	}
 }
+

@@ -1,0 +1,41 @@
+.doctors{
+    margin-left:  50px;
+    margin-right: 50px;
+  }
+  .title{
+    margin-bottom: 10px;
+  }
+
+  .new-doctor{
+    margin-top: 10px;
+  }
+  .button-new-doctor{
+    border-radius: 1ex;
+    border: 2px solid #9F73AB;
+    background-color: #DEE7E5; 
+  }
+  .remove-button{
+    border-radius: 1ex;
+    border: 2px solid #9F73AB;
+    background-color: #DEE7E5; 
+  }
+  .group-item{
+    display:flex;
+    flex-flow: column wrap;
+    border: 1px solid #9F73AB;
+    border-radius: 1ex;
+    justify-content: space-between ;
+    padding: 20px;
+    margin-bottom: 10px;
+  }
+  .eye{
+    display: flex;
+    justify-content: flex-end;
+    align-self: flex-start ;
+    color: black;
+  }
+  .edit{
+    display: flex;
+    justify-content: flex-end;
+    align-self: flex-end ;
+  }

@@ -76,6 +76,14 @@ public class User implements Serializable{
     return username;
   }
 
+  public Doctor getDoctor() {
+    return doctor;
+  }
+
+  public void setDoctor(Doctor doctor) {
+    this.doctor = doctor;
+  }
+
   public void setUsername(String username) {
     this.username = username;
   }

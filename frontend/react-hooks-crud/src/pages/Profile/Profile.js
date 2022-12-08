@@ -1,8 +1,10 @@
 import React from "react";
 import AuthService from "../../services/auth.service";
+// import DoctorService from "../../services/DoctorService";
 import Header from "../../components/Header/Header";
 const Profile = () => {
   const currentUser = AuthService.getCurrentUser();
+  // const currentDoctor = DoctorService.get();
 
   return (
     <>
@@ -22,9 +24,6 @@ const Profile = () => {
         <strong>Id:</strong> {currentUser.id}
       </p>
       
-      <p>
-        <strong>Email:</strong> {currentUser.email}
-      </p>
       <strong>Authorities:</strong>
       <ul>
         {currentUser.roles &&

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import * as FaIcons from 'react-icons/fa';
-
+import './GroupItem.scss';
 const GroupItem = ({active, text, action, index})=> {
 
     return (
