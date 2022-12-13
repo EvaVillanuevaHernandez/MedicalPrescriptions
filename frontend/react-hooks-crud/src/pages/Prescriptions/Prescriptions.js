@@ -3,13 +3,14 @@ import { useParams, useNavigate } from 'react-router-dom';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
+import swal from 'sweetalert';
 import PrescriptionsDataService from "../../services/PrescriptionsService";
 import Header from "../../components/Header/Header";
 import * as BiIcons from 'react-icons/bi';
 import './Prescriptions.scss';
 
 const Prescriptions = props => {
-  const { id }= useParams();
+  const { id } = useParams();
   let navigate = useNavigate();
 
   const initialPrescriptionsState = {
@@ -18,10 +19,9 @@ const Prescriptions = props => {
     doctorName: "",
     date: "",
     medicine: "",
-    posology:""
+    posology: ""
   };
   const [currentPrescriptions, setCurrentPrescriptions] = useState(initialPrescriptionsState);
-  const [message, setMessage] = useState("");
 
   const getPrescriptions = id => {
     PrescriptionsDataService.get(id)
@@ -45,25 +45,49 @@ const Prescriptions = props => {
   };
 
 
-  const updatePrescriptions = () => {
-    PrescriptionsDataService.update(currentPrescriptions.id, currentPrescriptions)
+  // const updatePrescriptions = () => {
+  //   PrescriptionsDataService.update(currentPrescriptions.id, currentPrescriptions)
+  //     .then(response => {
+  //       console.log(response.data);
+  //       updateAlert();
+  //       navigate("/prescriptionsList");
+  //     })
+  //     .catch(e => {
+  //       console.log(e);
+  //     });
+  // };
+  const updatePrescriptions = (event) => {
+    event.preventDefault();
+    let datitos = event.target;
+    let updatePrescriptions = {
+      id: currentPrescriptions.id,
+      patientName: datitos["patientName"].value,
+      doctorName: datitos["doctorName"].value,
+      date: datitos["date"].value,
+      medicine: datitos["medicine"].value,
+      posology: datitos["posology"].value,
+
+    }
+
+    PrescriptionsDataService.update(updatePrescriptions.id, updatePrescriptions)
       .then(response => {
         console.log(response.data);
-        setMessage("The Prescriptions was updated successfully!");
+        updateAlert();
         navigate("/prescriptionsList");
+
       })
       .catch(e => {
+
         console.log(e);
       });
   };
-
 
 
   const deletePrescriptions = () => {
     PrescriptionsDataService.remove(currentPrescriptions.id)
       .then(response => {
         console.log(response.data);
-        setMessage("The Prescriptions was deleted successfully!");
+        deleteAlert();
         navigate("/prescriptionsList");
       })
       .catch(e => {
@@ -71,103 +95,118 @@ const Prescriptions = props => {
       });
   };
 
-    return (
-      <>
-      <Header/>
+  const updateAlert = () => {
+    swal({
+      title: "update",
+      text: "The prescriptions was updated successfully!",
+      icon: "success",
+
+    })
+
+  };
+
+  const deleteAlert = () => {
+    swal({
+      title: "delete",
+      text: "The prescriptions was deleted successfully!",
+      icon: "success",
+
+    })
+
+  };
+
+  return (
+    <>
+      <Header />
       <style>{'body { background-color: #DEE7E5 ; }'}</style>
       <div className="form-prescriptions">
-        {currentPrescriptions ? (
-          <Form >
-          <div className="container-pr">
-            <Row className="mb-3">
-              <Form.Group as={Col} md="4"
-                className="position-relative">
-                <Form.Label> Name:</Form.Label>
-                <Form.Control type="text"
-                  className="form-control-prescriptions"
-                  id="patientName"
-                  name="patientName"
-                  value={currentPrescriptions.patientName}
-                  onChange={handleInputChange}/>
+        <>
+          <div>
+            <Form  onSubmit={updatePrescriptions} >
+              <div className="container-pr">
+                <Row className="mb-3">
+                  <Form.Group as={Col} md="4"
+                    className="position-relative">
+                    <Form.Label> Name:</Form.Label>
+                    <Form.Control type="text"
+                      className="form-control-prescriptions"
+                      id="patientName"
+                      name="patientName"
+                      value={currentPrescriptions.patientName}
+                      onChange={handleInputChange} />
 
-              </Form.Group>
+                  </Form.Group>
 
-              <Form.Group as={Col} md="4"
-                className="position-relative">
+                  <Form.Group as={Col} md="4"
+                    className="position-relative">
 
-                <Form.Label>Doctor:</Form.Label>
-                <Form.Control
-                 type="text"
-                 className="form-control-prescriptions"
-                 id="doctorName"
-                 name="doctorName"
-                 value={currentPrescriptions.doctorName}
-                 onChange={handleInputChange}/>
-              </Form.Group>
-              </Row>
+                    <Form.Label>Doctor:</Form.Label>
+                    <Form.Control
+                      type="text"
+                      className="form-control-prescriptions"
+                      id="doctorName"
+                      name="doctorName"
+                      value={currentPrescriptions.doctorName}
+                      onChange={handleInputChange} />
+                  </Form.Group>
+                </Row>
 
-              <Row className="mb-3">
-              <Form.Group as={Col} md="4"
-                className="position-relative">
+                <Row className="mb-3">
+                  <Form.Group as={Col} md="4"
+                    className="position-relative">
 
-                <Form.Label>Date:</Form.Label>
-                <Form.Control
-                type="text"
-                className="form-control-prescriptions"
-                id="date"
-                name="date"
-                value={currentPrescriptions.date}
-                onChange={handleInputChange}/>
-              </Form.Group>
-           
+                    <Form.Label>Date:</Form.Label>
+                    <Form.Control
+                      type="text"
+                      className="form-control-prescriptions"
+                      id="date"
+                      name="date"
+                      value={currentPrescriptions.date}
+                      onChange={handleInputChange} />
+                  </Form.Group>
 
-            <Form.Group as={Col} md="4"
-              className="position-relative">
 
-              <Form.Label>Medicine:</Form.Label>
-              <Form.Control
-               type="text"
-               className="form-control-prescriptions"
-               id="medicine"
-               name="medicine"
-               value={currentPrescriptions.medicine}
-               onChange={handleInputChange}
-              />
-            </Form.Group>
-            </Row>
+                  <Form.Group as={Col} md="4"
+                    className="position-relative">
 
-            <Form.Group className="position-relative mb-3">
-              <Form.Label>Posology:</Form.Label>
-              <Form.Control
-                 type="text"
-                 className="form-control-posology"
-                 id="posology"
-                 name="posology"
-                 value={currentPrescriptions.posology}
-                 onChange={handleInputChange}
-              />
-            </Form.Group> 
-          </div>   
-                
-          <button className="delete-button" onClick={deletePrescriptions}>
+                    <Form.Label>Medicine:</Form.Label>
+                    <Form.Control
+                      type="text"
+                      className="form-control-prescriptions"
+                      id="medicine"
+                      name="medicine"
+                      value={currentPrescriptions.medicine}
+                      onChange={handleInputChange}
+                    />
+                  </Form.Group>
+                </Row>
+
+                <Form.Group className="position-relative mb-3">
+                  <Form.Label>Posology:</Form.Label>
+                  <Form.Control
+                    type="text"
+                    className="form-control-posology"
+                    id="posology"
+                    name="posology"
+                    value={currentPrescriptions.posology}
+                    onChange={handleInputChange}
+                  />
+                </Form.Group>
+              </div>
+
+              <button type="submit" className="update-button" >
+                <BiIcons.BiEditAlt />Update
+              </button>
+            </Form>
+      
+            <button className="delete-button" onClick={deletePrescriptions}>
                 <BiIcons.BiTrashAlt />  Delete
               </button>
-              <p>{message}</p>
-
-              <button type="submit" className="update-button" onClick={updatePrescriptions} 
-              >
-                <BiIcons.BiEditAlt />Update
-                <p>{message}</p>
-              </button>                  
-        </Form>
-        ) : (
-          <div>
-            <br />
           </div>
-        )}
+        </>
       </div>
-      </>
-    );
-  };
+    </>
+  );
+};
 
 export default Prescriptions;

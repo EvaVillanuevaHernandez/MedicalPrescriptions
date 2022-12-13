@@ -52,7 +52,7 @@ const Login = () => {
     if (checkBtn.current.context._errors.length === 0) {
       AuthService.login(username, password).then(
         () => {
-          navigate("/patients");
+          navigate("/patientsList");
           window.location.reload();
         },
         (error) => {

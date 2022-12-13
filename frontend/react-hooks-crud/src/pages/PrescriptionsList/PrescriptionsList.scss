@@ -1,6 +1,9 @@
-
+// .col-md-6{
+//   background-color: #DEE7E5;
+//   border-radius: 1ex;
+// }
 .prescriptions{
-  margin-left:  10%;
+  margin-left:  20%;
   margin-right: 50px;
 }
 .title{
@@ -11,7 +14,7 @@
   align-self: flex-start;
   flex-flow: row;
   border-radius: 1ex;
-  border: 2px solid #aba673;
+  border: 2px solid #A88A1E;
   
 }
 .search-bar{
@@ -66,4 +69,11 @@
   justify-content: flex-start ;
   padding: 20px;
   margin-bottom: 10px;
+}
+#elipse5 {
+  z-index: -1;
+  position: relative;
+  bottom: 5px;
+  right: 5px;
+
 }

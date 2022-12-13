@@ -11,12 +11,13 @@ import { IconContext } from 'react-icons';
 function Header() {
   const [sidebar, setSidebar] = useState(false);
 
+  const user = JSON.parse(localStorage.getItem('user'));
   const showSidebar = () => setSidebar(!sidebar);
 
   return (
     <>
       <IconContext.Provider value={{ color: 'none' }}>
-        <img src="/images/elipse2.png" className="elipse2" alt="" />
+        <img src="/images/elipse3.png" className="elipse2" alt="" />
         <div className='navbar' >
           <Link to='#' >
             <BiIcons.BiMenu className='menu-bars' onClick={showSidebar} />
@@ -32,14 +33,14 @@ function Header() {
               </Link>
             </li>
             {SidebarData.map((item, index) => {
-              return (
+              return !item.onlyAdmin || user.roles.includes('ROLE_ADMIN') ? (
                 <li key={index} className={item.cName}>
-                  <Link to={item.path}>
-                    {item.icon}
-                    <span>{item.title}</span>
-                  </Link>
-                </li>
-              );
+                <Link to={item.path}>
+                  {item.icon}
+                  <span>{item.title}</span>
+                </Link>
+              </li>
+              ): null;
             })}
           </ul>
         </nav>

@@ -56,11 +56,13 @@ public class AuthController {
 
 	  @PostMapping("/signin")
 	  public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
+//		  byte[] username = Base64.getDecoder().decode(loginRequest.getUsername());
+//		  String decodeUsername = new String(username);
 //		  byte[] password = Base64.getDecoder().decode(loginRequest.getPassword());
 //		  String decodePassword = new String(password);
 
 	    Authentication authentication = authenticationManager.authenticate(
-	        new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
+	        new UsernamePasswordAuthenticationToken(/*decodeUsername */loginRequest.getUsername(), /*decodePassword*/loginRequest.getPassword()));
 
 	    SecurityContextHolder.getContext().setAuthentication(authentication);
 	    String jwt = jwtUtils.generateJwtToken(authentication);
@@ -79,10 +81,12 @@ public class AuthController {
 
 	  @PostMapping("/signup")
 	  public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
+//		  byte[] username = Base64.getDecoder().decode(signUpRequest.getUsername());
+//		  String decodeUsername = new String(username);
 //		  byte[] password = Base64.getDecoder().decode(signUpRequest.getPassword());
 //		  String decodePassword = new String(password);
 
-	    if (userRepository.existsByUsername(signUpRequest.getUsername())) {
+	    if (userRepository.existsByUsername(/*decodeUsername*/signUpRequest.getUsername())) {
 	      return ResponseEntity
 	          .badRequest()
 	          .body(new MessageResponse("Error: Username is already taken!"));
@@ -97,7 +101,7 @@ public class AuthController {
 	    // Create new user's account
 	    User user = new User(signUpRequest.getUsername(), 
 	               signUpRequest.getEmail(),
-	               encoder.encode(signUpRequest.getPassword()));
+	               encoder.encode(/*decodePassword*/signUpRequest.getPassword()));
 
 	    Set<String> strRoles = signUpRequest.getRole();
 	    Set<Role> roles = new HashSet<>();

@@ -7,17 +7,19 @@ import * as MdIcons from 'react-icons/md';
 import './Home.scss'
 const items = [
   {
+    src: "/images/slider3.jpg",
+    altText: 'Slide_1'
+  },
+  
+  {
     src: "/images/slider1.jpg",
-    altText: 'Slider1'
+    altText: 'Slider_2'
   },
   {
     src: "/images/slider2.jpg",
-    altText: 'Slide 2'
+    altText: 'Slide_3'
   },
-  {
-    src: "/images/slider3.jpg",
-    altText: 'Slide 3'
-  }
+ 
 ];
 
 class Home extends Component {

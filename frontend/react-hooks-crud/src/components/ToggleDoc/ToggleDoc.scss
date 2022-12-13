@@ -1,0 +1,21 @@
+.group-item-doc{
+    display: flex;
+    flex-flow: column wrap;
+    border: 1px solid #9F73AB;
+    border-radius: 1ex;
+    justify-content: space-between;
+    padding: 20px;
+    margin-bottom: 10px;
+}
+
+.edit{
+    display: flex;
+    justify-content: flex-end;
+    align-content: space-around;
+    align-self: flex-end ;    
+}
+
+a{
+    color: #272620;
+    text-decoration: none;
+}

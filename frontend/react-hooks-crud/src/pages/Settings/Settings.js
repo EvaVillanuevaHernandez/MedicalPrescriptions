@@ -3,6 +3,7 @@ import './Settings.scss';
 import HeaderLogin from "../../components/Header/HeaderLogin";
 import HeaderSett from "../../components/Header/HeaderSett";
 import * as GiIcons from 'react-icons/gi';
+import * as GrIcons from 'react-icons/gr';
 
 function Settings() {
     return (
@@ -17,6 +18,9 @@ function Settings() {
             <a href="/help"> <GiIcons.GiHelp/> Help </a>          
             </div>
 
+            <div className="LogOut">
+            <a href="/login"> <GrIcons.GrLogout/> Log out </a>          
+            </div>
 
             <p className="version"> Versión de la aplicación 1.0</p>  
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
+import swal from 'sweetalert';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useParams, useNavigate } from 'react-router-dom';
@@ -23,26 +24,23 @@ const Patients = props => {
     dni: "",
     history: "",
     image: "",
-    typeImage: ""
+    typeImg: ""
   };
+
   const [currentPatient, setCurrentPatient] = useState(initialPatientsState);
-  const [message, setMessage] = useState("");
 
   const getPatients = id => {
     PatientsDataService.get(id)
       .then(response => {
         setCurrentPatient(response.data);
-
-        console.log(response.data);
       })
       .catch(e => {
-        console.log(e);
+        console.log(e);    
       });
   };
 
   useEffect(() => {
-    if (id)
-      getPatients(id);
+    if (id) getPatients(id);
   }, [id]);
 
   const handleInputChange = event => {
@@ -50,12 +48,9 @@ const Patients = props => {
     setCurrentPatient({ ...currentPatient, [name]: value });
   };
 
-
   const updatePatient = (event) => {
     event.preventDefault();
-    console.log("hola holita caracolita")
     let datitos = event.target;
-
     let updatedPatient = {
       id: currentPatient.id,
       name: datitos["name"].value,
@@ -63,16 +58,14 @@ const Patients = props => {
       secondSurname: datitos["secondSurname"].value,
       dni: datitos["dni"].value,
       history: datitos["history"].value,
-      image: currentPatient.image,
-      typeImage: currentPatient.typeImage
+      
     }
-
+    
     PatientsDataService.update(updatedPatient.id, updatedPatient)
       .then(response => {
         console.log(response.data);
-        setMessage("The Patient was updated successfully!");
-
-        navigate("/patients");
+        updateAlert();
+        navigate("/patientsList");
 
       })
       .catch(e => {
@@ -85,31 +78,49 @@ const Patients = props => {
     PatientsDataService.remove(currentPatient.id)
       .then(response => {
         console.log(response.data);
-        setMessage("The Patient was deleted successfully!");
-        navigate("/patients");
+        deleteAlert();
+        navigate("/patientsList");
       })
       .catch(e => {
         console.log(e);
       });
   };
 
+  const updateAlert = () => {
+    swal({
+      title: "Update",
+      text: "The Patient was updated successfully!",
+      icon: "success",
+
+    })
+  };
+
+  const deleteAlert = () => {
+    swal({
+      title: "Delete",
+      text: "The Patient was deleted successfully!",
+      icon: "success",
+
+    })
+
+  };
 
   return (
     <>
       <Header />
       <style>{'body { background-color: #DEE7E5 ; }'}</style>
-      <div className="cabecera">
-        <p className="patient-name">{currentPatient.name}</p>
+      <div className="cabecera-pat">
+        <p className="patient-name">{`${currentPatient.name} ${currentPatient.surname} ${currentPatient.secondSurname} `}</p>
       </div>
 
       <div className="form-p">
-        {currentPatient ? (
+        <>
           <div>
             <Form onSubmit={updatePatient}>
               <div className="container-p">
                 <Row className="mb-3">
                   <Form.Group as={Col} md="4">
-                    <img src={`data:${currentPatient.typeImage};base64,${currentPatient.image}`}
+                    <img src={`data:${currentPatient.typeImg};base64,${currentPatient.image}`}
                       alt=" " className="patient-image" onChange={handleInputChange} />
                   </Form.Group>
 
@@ -122,6 +133,7 @@ const Patients = props => {
                       value={currentPatient.name}
                       onChange={handleInputChange} />
                   </Form.Group>
+
                   <Form.Group as={Col} md="4"
                     className="position-relative">
 
@@ -136,31 +148,31 @@ const Patients = props => {
                   </Form.Group>
                 </Row>
 
-                <Row className="mb-3">           
-                <Form.Group as={Col} md="4"
-                  className="position-relative">
-                  <Form.Label>Second surname:</Form.Label>
-                  <Form.Control
-                    type="text"
-                    className="form-control"
-                    id="secondSurname"
-                    name="secondSurname"
-                    value={currentPatient.secondSurname}
-                    onChange={handleInputChange} />
-                </Form.Group>
+                <Row className="mb-3">
+                  <Form.Group as={Col} md="4"
+                    className="position-relative">
+                    <Form.Label>Second surname:</Form.Label>
+                    <Form.Control
+                      type="text"
+                      className="form-control"
+                      id="secondSurname"
+                      name="secondSurname"
+                      value={currentPatient.secondSurname}
+                      onChange={handleInputChange} />
+                  </Form.Group>
 
-                <Form.Group as={Col} md="4"
-                  className="position-relative">
-                  <Form.Label>Dni:</Form.Label>
-                  <Form.Control
-                    type="text"
-                    className="form-control"
-                    id="dni"
-                    name="dni"
-                    value={currentPatient.dni}
-                    onChange={handleInputChange}
-                  />
-                </Form.Group>
+                  <Form.Group as={Col} md="4"
+                    className="position-relative">
+                    <Form.Label>Dni:</Form.Label>
+                    <Form.Control
+                      type="text"
+                      className="form-control"
+                      id="dni"
+                      name="dni"
+                      value={currentPatient.dni}
+                      onChange={handleInputChange}
+                    />
+                  </Form.Group>
                 </Row>
 
                 <Form.Group className="position-relative mb-3">
@@ -177,28 +189,22 @@ const Patients = props => {
 
               </div>
 
-
-              <button className="delete-button" onClick={deletePatient}>
-                <BiIcons.BiTrashAlt /> Delete
-              </button>
-              <p>{message}</p>
-
               <button type="submit" className="update-button" >
-
-                {/* onClick={updatePatient} */}
                 <BiIcons.BiEditAlt />Update
               </button>
-              <p>{message}</p>
             </Form>
-          </div>
-        ) : (
-          <div id="elipse5">
-            <img src="/images/elipse5.png" alt="" />
-          </div>
-        )
-        }
-      </div >
 
+            
+            <button className="delete-button" onClick={deletePatient}>
+                <BiIcons.BiTrashAlt /> Delete
+              </button>
+          </div>
+
+        </>  
+      </div >
+      <div id="elipse5">
+          <img src="/images/elipse5.png" alt="" />
+        </div>
     </>
   );
 };

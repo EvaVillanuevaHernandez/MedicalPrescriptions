@@ -11,7 +11,7 @@ const Profile = () => {
     surname: "",
     secondSurname: "",
     dni: ""
-   
+
   };
   return (
     <>
@@ -31,11 +31,13 @@ const Profile = () => {
           {currentUser.roles &&
             currentUser.roles.map((role, index) => <li key={index}>{role}</li>)}
         </ul>
-            
-              </div>
-            </>
+      </div>
+      <div id="elipse5">
+              <img src="/images/elipse5.png" alt="" />
+            </div>
+    </>
 
-            );
+  );
 };
 
-            export default Profile;
+export default Profile;

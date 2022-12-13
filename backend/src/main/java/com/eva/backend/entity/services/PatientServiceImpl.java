@@ -39,6 +39,11 @@ public class PatientServiceImpl implements IPatientService {
 	public void put(Patient patient, int id) {
 		patientDao.findById(id).ifPresent((x)->{
 			patient.setId(id);
+			if(patient.getImage() == null){
+				patient.setImage(x.getImage());
+				patient.setNameImg(x.getNameImg());
+				patient.setTypeImg(x.getTypeImg());
+			}
 			patientDao.save(patient);
 		});
 		

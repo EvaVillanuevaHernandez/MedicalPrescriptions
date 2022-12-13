@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Navigate } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import PatientsDataService from "../../services/PatientService";
+import {useNavigate } from 'react-router-dom';
 import './AddPatient.scss';
 
-
 const AddPatient = () => {
+  let navigate = useNavigate();
+
   const initialPatientsState = {
     id: null,
     name: "",
@@ -55,19 +56,21 @@ const AddPatient = () => {
           secondSurname: response.data.secondSurname,
           dni: response.datadni,
           history: response.data.history
-        });
+        }); 
         setSubmitted(true);
-        console.log(response.data);
+        console.log(response.data);     
       })
       .catch(e => {
         console.log(e);
       });
-    Navigate('/patients');
+      
+   
   };
 
   const newPatients = () => {
     setPatient(initialPatientsState);
     setSubmitted(false);
+    navigate("/patientsList");
   };
 
 
@@ -85,47 +88,51 @@ const AddPatient = () => {
           </div>
         ) : (
 
-          <div className="container">
+          <div className="container-addP">
             <form onSubmit={savePatients} >
 
               <div className="form-group">
                 <label htmlFor="name">Name:</label>
                 <input type="text" className="form-control" id="name"
                   required value={patient.name} onChange={handleInputChange} name="name"
-                  minLength={3} maxLength={40} validations= {[required]}/>
+                  minLength={3} maxLength={40} validations= {[required]}
+                  />
               </div>
 
               <div className="form-group">
-                <label htmlFor="surname">Surname:</label>
+                <label htmlFor="surname">First surname:</label>
                 <input type="text" className="form-control" id="surname"
                   requiredvalue={patient.surname} onChange={handleInputChange} name="surname"
-                  minLength={3} maxLength={40} validations={[required]} />
+                  minLength={3} maxLength={40} validations={[required]} 
+                  />
               </div>
 
               <div className="form-group">
                 <label htmlFor="secondSurname">Second surname:</label>
                 <input type="text" className="form-control" id="surname"
                   requiredvalue={patient.secondSurname} onChange={handleInputChange} name="secondSurname"
-                  minLength={3} maxLength={40} validations={[required]}/>
+                  minLength={3} maxLength={40} validations={[required]}
+                  />
               </div>
 
               <div className="form-group">
                 <label className="label" htmlFor="dni">Dni:</label>
                 <input type="text" className="form-control" id="dni"
                   required value={patient.dni} onChange={handleInputChange} name="dni"
-                  maxLength={9} validations={[required]} />
+                  maxLength={9} validations={[required]} 
+                  />
               </div>
 
               <div className="form-group" >
                 <label id="label" htmlFor="history">History: </label>
                 <input type="text" className="form-control-history" id="history"
-                  required value={patient.history} onChange={handleInputChange} name="history" />
+                  required value={patient.history} onChange={handleInputChange} name="history"
+                 />
               </div>
                <br/>
               <div className="form-group">
-                <input type="file"
-                  id="image" name="image"
-                  accept="image/png, image/jpeg" />
+                <input type="file"  id="image" name="image" accept="image/png, image/jpeg"
+                validations={[required]}  />
               </div>
 
               <button type="submit" className="btn-submit">

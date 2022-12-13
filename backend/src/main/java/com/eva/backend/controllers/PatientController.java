@@ -19,89 +19,98 @@ import com.eva.backend.entity.models.Patient;
 import com.eva.backend.entity.services.IPatientService;
 import com.eva.backend.tools.ImageUtility;
 
-@RestController	
-@CrossOrigin(origins ="*")
+@RestController
+@CrossOrigin(origins = "*")
 public class PatientController {
-	
-	@Autowired
-	IPatientService patientService;
-	
-	@GetMapping("/patients")
-	public List<Patient> getAllPatients(){
-		List<Patient>db=patientService.getAll();
-		db.forEach((x)->{
-//			byte[] noZip=ImageUtility.decompressImage(x.getImage());
-//			x.setImage(noZip);
-			if(x.getImage()!=null){
-				byte[] noZip=ImageUtility.decompressImage(x.getImage());
-				x.setImage(noZip);
-			}
-		});
-		
-		return db;
-		//return patientService.getAll();
-	}
-	
-	@GetMapping("/patients/{id}")
-	public Patient getOne(@PathVariable(value = "id")int id) {
-		final Patient db= patientService.get(id);
-		//return patientService.get(id);
-		return Patient.builder()
-				.nameImg(db.getNameImg())
-				.typeImg(db.getTypeImg())
-				.image(ImageUtility.decompressImage(db.getImage()))
-				.name(db.getName())
-				.surname(db.getSurname())
-				.secondSurname(db.getSecondSurname())
-				.dni(db.getDni())
-				.history(db.getHistory())
-				.id(db.getId())
-				.build();
-	}
-	
-	/*@GetMapping("/patients/{name}")
-	public Patient findByName(@PathVariable(value = "name") String name) {
-		return patientService.get(name);
-	}*/
 
-	@PostMapping("/patients")
-	public void post(Patient patient,@RequestParam(value = "file",required = false) MultipartFile image)throws IOException{
-		if(image!=null){
-			String randomID =UUID.randomUUID().toString();
-			String filename = randomID.concat(randomID+image.getOriginalFilename().substring(image.getOriginalFilename().lastIndexOf(".")));
+    @Autowired
+    IPatientService patientService;
 
-			patient.setNameImg(filename);
-			patient.setTypeImg(image.getContentType());
-			patient.setImage(ImageUtility.compressImage(image.getBytes()));
-		}
+    @GetMapping("/patients")
+    public List<Patient> getAllPatients() {
+        List<Patient> db = patientService.getAll();
+        db.forEach((x) -> {
+            if (x.getImage() != null) {
+                byte[] noZip = ImageUtility.decompressImage(x.getImage());
+                x.setImage(noZip);
+            }
+        });
 
-		patientService.post(patient);
-		
-	}
+        return db;
+        //return patientService.getAll();
+    }
+
+    @GetMapping("/patients/{id}")
+    public Patient getOne(@PathVariable(value = "id") int id) {
+        final Patient db = patientService.get(id);
+        //return patientService.get(id);
+        if (db.getImage() != null) {
+            return Patient.builder()
+                    .nameImg(db.getNameImg())
+                    .typeImg(db.getTypeImg())
+                    .image(ImageUtility.decompressImage(db.getImage()))
+                    .name(db.getName())
+                    .surname(db.getSurname())
+                    .secondSurname(db.getSecondSurname())
+                    .dni(db.getDni())
+                    .history(db.getHistory())
+                    .id(db.getId())
+                    .build();
+        } else {
+            return Patient.builder()
+                    .name(db.getName())
+                    .surname(db.getSurname())
+                    .secondSurname(db.getSecondSurname())
+                    .dni(db.getDni())
+                    .history(db.getHistory())
+                    .id(db.getId())
+                    .build();
+        }
+    }
 
 
-	
-	@PutMapping("/patients/{id}")
-	public void put(Patient patient,@PathVariable(value = "id")int id,@RequestParam(value = "file", required = false) MultipartFile image)throws IOException{
-		if(image!=null) {
-			String randomID = UUID.randomUUID().toString();
-			String filename = randomID.concat(randomID + (image.getOriginalFilename().lastIndexOf(".")));
+    @PostMapping("/patients")
+    public void post(Patient patient, @RequestParam(value = "file", required = false) MultipartFile image) throws IOException {
+        if (image != null) {
+            String randomID = UUID.randomUUID().toString();
+            String filename = randomID.concat(randomID + image.getOriginalFilename().substring(image.getOriginalFilename().lastIndexOf(".")));
 
-			patient.setNameImg(filename);
-			patient.setTypeImg(image.getContentType());
-			patient.setImage(ImageUtility.compressImage(image.getBytes()));
-		}
-		patientService.put(patient, id);
-	}
-	
-	@DeleteMapping("/patients/{id}")
-	public void delete(@PathVariable(value="id")int id) {
-		patientService.delete(id);
-	
-	}
-	
-	@PostMapping("/doctors/{idDoctor}/patients/{idPatient}")
-	public void DtoP(@PathVariable(value="idDoctor") int idDoctor,@PathVariable(value="idPatient")int idPatient) {
-		patientService.DtoP(idDoctor,idPatient);
-	}
+            patient.setNameImg(filename);
+            patient.setTypeImg(image.getContentType());
+            patient.setImage(ImageUtility.compressImage(image.getBytes()));
+        }
+
+        patientService.post(patient);
+
+    }
+
+
+    @PutMapping("/patients/{id}")
+    public void put(Patient patient, @PathVariable(value = "id") int id, @RequestParam(value = "file", required = false) MultipartFile image) throws IOException {
+        if (image != null) {
+            System.out.println("image no es nulo");
+            String randomID = UUID.randomUUID().toString();
+            String filename = randomID.concat(randomID + (image.getOriginalFilename().lastIndexOf(".")));
+
+            patient.setNameImg(filename);
+            patient.setTypeImg(image.getContentType());
+            patient.setImage(ImageUtility.compressImage(image.getBytes()));
+        }else {
+            patient.setNameImg(getOne(id).getNameImg());
+            patient.setTypeImg(getOne(id).getTypeImg());
+            patient.setImage(getOne(id).getImage());
+        }
+        patientService.put(patient, id);
+    }
+
+    @DeleteMapping("/patients/{id}")
+    public void delete(@PathVariable(value = "id") int id) {
+        patientService.delete(id);
+
+    }
+
+    @PostMapping("/doctors/{idDoctor}/patients/{idPatient}")
+    public void DtoP(@PathVariable(value = "idDoctor") int idDoctor, @PathVariable(value = "idPatient") int idPatient) {
+        patientService.DtoP(idDoctor, idPatient);
+    }
 }

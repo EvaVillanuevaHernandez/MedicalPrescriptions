@@ -1,5 +1,5 @@
 .doctors{
-    margin-left:  50px;
+    margin-left:  20%;
     margin-right: 50px;
   }
   .title{
@@ -7,7 +7,7 @@
   }
 
   .new-doctor{
-    margin-top: 10px;
+    margin-top: 20px;
   }
   .button-new-doctor{
     border-radius: 1ex;
@@ -19,15 +19,27 @@
     border: 2px solid #9F73AB;
     background-color: #DEE7E5; 
   }
-  .group-item{
-    display:flex;
-    flex-flow: column wrap;
-    border: 1px solid #9F73AB;
+  .container-search-bar{
+    display: flex;
+    align-self: flex-start;
+    flex-flow: row;
     border-radius: 1ex;
-    justify-content: space-between ;
-    padding: 20px;
-    margin-bottom: 10px;
+    border: 2px solid #A88A1E;
+    
   }
+  .search-bar{
+   border-radius: 1ex;
+    flex-flow: row;
+    background-color: #DEE7E5;
+    border: none;
+    width: 790px;
+  }
+
+ .search-button{
+  border: 1px solid #706e6e;
+  border-radius: 1ex;
+  background-color: #DEE7E5; 
+ }
   .eye{
     display: flex;
     justify-content: flex-end;

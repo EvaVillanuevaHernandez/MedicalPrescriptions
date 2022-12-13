@@ -19,11 +19,25 @@
   border-radius: 1ex;
 }
 
+input[type="file" i] {
+  appearance: none;
+  cursor: default;
+  align-items: baseline;
+  color: inherit;
+  text-overflow: ellipsis;
+  white-space: pre;
+  text-align: start !important;
+  padding: initial;
+  overflow: hidden !important;
+}
+
+
+
 .add{
   margin-left: 20px;
   font-family: 'Arial';
 }
-.container{
+.container-addP{
   margin-top: 30px;
   margin-left: 20px;
 }

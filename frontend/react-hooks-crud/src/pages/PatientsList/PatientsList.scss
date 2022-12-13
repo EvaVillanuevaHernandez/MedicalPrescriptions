@@ -1,8 +1,8 @@
 .patients{
-    margin-left:  60px;
+    margin-left:  10%;
     margin-right: 50px;
   }
-  .title{
+  .pat{
     margin-bottom: 20px;
   }
   .container-search-bar{
@@ -10,7 +10,7 @@
     align-self: flex-start;
     flex-flow: row;
     border-radius: 1ex;
-    border: 2px solid #aba673;
+    border: 2px solid #A88A1E;
     
   }
   .search-bar{
@@ -50,4 +50,11 @@
     display: flex;
     justify-content: flex-end;
     align-self: flex-end ;
+  }
+  #elipse5 {
+    z-index: -1;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+  
   }

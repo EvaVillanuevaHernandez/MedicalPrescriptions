@@ -4,7 +4,6 @@ const getAll = () => {
   return http.get("/patients");
 };
 
-
 const get = id => {
   return http.get(`/patients/${id}`);
 };
@@ -17,11 +16,10 @@ const create = data => {
   dataToSend.append("surname", data.surname);
   dataToSend.append("secondSurname", data.secondSurname);
   dataToSend.append("file", data.image);
-  dataToSend.append("nameImg", data.nameImg);
-  dataToSend.append("typeImg", data.typeImg);
+  // dataToSend.append("nameImg", data.nameImg);
+  // dataToSend.append("typeImg", data.typeImg);
   return http.post("/patients", dataToSend);
 };
-
 
 const update = (id, data) => {
   let dataToSend = new FormData();
@@ -30,18 +28,13 @@ const update = (id, data) => {
   dataToSend.append("name", data.name);
   dataToSend.append("surname", data.surname);
   dataToSend.append("secondSurname", data.secondSurname);
-  dataToSend.append("image", data.image);
-  dataToSend.append("nameImg", data.nameImg);
-  dataToSend.append("typeImg", data.typeImg);
+  // dataToSend.append("image", data.image);
   return http.put(`/patients/${id}`, dataToSend);
 };
 
 const remove = id => {
   return http.delete(`/patients/${id}`);
 };
-
-
-
 
 const PatientService = {
   getAll,
