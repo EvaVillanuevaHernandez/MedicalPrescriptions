@@ -42,7 +42,8 @@ const PrescriptionsList = () => {
           <div className="col-md-6">
             <h4 className="title">Prescriptions</h4>
             <div className="container-search-bar">
-              <input className="search-bar" type="text" placeholder=" Search by patient name" value={searchPatientName}
+              <input className="search-bar" type="text" placeholder=" Search by patient name" 
+                value={searchPatientName}
                 onChange={onChangeSearchPatientName} />
               <i><AiIcons.AiOutlineSearch /></i>
             </div>

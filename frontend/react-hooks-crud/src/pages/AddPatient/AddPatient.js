@@ -95,23 +95,23 @@ const AddPatient = () => {
                 <label htmlFor="name">Name:</label>
                 <input type="text" className="form-control" id="name"
                   required value={patient.name} onChange={handleInputChange} name="name"
-                  minLength={3} maxLength={40} validations= {[required]}
-                  />
+                  minLength={3} maxLength={40}
+                  pattern="[A-ZÄËÏÖÜÁÉÍÓÚÂÊÎÔÛÀÈÌÒÙ][a-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ]+"/>
               </div>
 
               <div className="form-group">
                 <label htmlFor="surname">First surname:</label>
                 <input type="text" className="form-control" id="surname"
                   requiredvalue={patient.surname} onChange={handleInputChange} name="surname"
-                  minLength={3} maxLength={40} validations={[required]} 
-                  />
+                  minLength={3} maxLength={40}  
+                  pattern="[A-ZÄËÏÖÜÁÉÍÓÚÂÊÎÔÛÀÈÌÒÙ][a-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ]+"/>
               </div>
 
               <div className="form-group">
                 <label htmlFor="secondSurname">Second surname:</label>
                 <input type="text" className="form-control" id="surname"
                   requiredvalue={patient.secondSurname} onChange={handleInputChange} name="secondSurname"
-                  minLength={3} maxLength={40} validations={[required]}
+                  minLength={3} maxLength={40}  pattern="[A-ZÄËÏÖÜÁÉÍÓÚÂÊÎÔÛÀÈÌÒÙ][a-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ]+"
                   />
               </div>
 
@@ -119,7 +119,7 @@ const AddPatient = () => {
                 <label className="label" htmlFor="dni">Dni:</label>
                 <input type="text" className="form-control" id="dni"
                   required value={patient.dni} onChange={handleInputChange} name="dni"
-                  maxLength={9} validations={[required]} 
+                  pattern="^[0-9]{8,8}[A-Za-z]$"
                   />
               </div>
 

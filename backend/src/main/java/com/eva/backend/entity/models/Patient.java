@@ -46,19 +46,7 @@ public class Patient implements Serializable {
 
 	@ManyToOne
 	private Doctor doctor;
-	
-//	public Patient(String dni, String name, String surname, String history, String doctorId, int id) {
-//		super();
-//		this.dni = dni;
-//		this.name = name;
-//		this.surname = surname;
-//		this.history = history;
-//		this.id = id;
-//	}
 
-//	public Patient(){
-//		super();
-//	}
 	
 	public int getId() {
 		return id;

@@ -183,6 +183,7 @@ const Doctors = props => {
                                     name="collegiateNum"
                                     value={currentDoctor.collegiateNum}
                                     onChange={handleInputChange}
+                                    pattern="/[0-9]{7,8}[A-Z]/"
                                 />
                             </Form.Group>
 

@@ -7,7 +7,7 @@ import com.eva.backend.entity.models.Prescription;
 public interface IPrescriptionService {
 	public Prescription get(int id );
 	public List <Prescription> getAll();
-	public void post(Prescription prescription);
+	public Prescription post(Prescription prescription);
 	public void put(Prescription prescription, int id);
 	public void delete (int id);
 	

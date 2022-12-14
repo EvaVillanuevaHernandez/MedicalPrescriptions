@@ -32,8 +32,9 @@ public Prescription getOne(@PathVariable(value = "id")int id) {
 }
 
 @PostMapping("/prescriptions")
-public void post(Prescription prescription){
-	prescriptionService.post(prescription);	
+public int post(Prescription prescription){
+	Prescription p = prescriptionService.post(prescription);
+	return p.getId();
 }
 
 @PutMapping("/prescriptions/{id}")
@@ -52,15 +53,8 @@ public void DtoP(@PathVariable(value="idDoctor") int idDoctor,
 	prescriptionService.DtoP(idDoctor,idPrescription);
 }
 @PostMapping("/patients/{idPatient}/prescriptions/{idPrescription}")
-public void PtoP(@PathVariable(value="idPatient") int idPatients,
+public void PtoP(@PathVariable(value="idPatient") int idPatient,
 				 @PathVariable(value="idPrescription")int idPrescription) {
+	prescriptionService.PtoP( idPatient,  idPrescription);;
 
-//FK
-
-/*
-@GetMapping(path = "/prescriptions/id/{id}")
-private List<Prescription> findAllFromId(@PathVariable("id") int id){
-	System.out.println(id);
-	return prescriptionService.findAllFromId(id);
-}*/
 }}

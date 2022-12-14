@@ -10,6 +10,7 @@ const get = id => {
 
 const create = data => {
   let dataToSend = new FormData();
+  // dataToSend.append("patientName", data.patientId);
   dataToSend.append("patientName", data.patientName);
   dataToSend.append("doctorName", data.doctorName);
   dataToSend.append("date", data.date);
@@ -39,7 +40,15 @@ const removeAll = () => {
 //   return http.get(`/prescriptions?patientName=${patientName}`);
 // };
 
+const createPrescriptionWithPatient = (prescriptionId, patientId) => {
+  let endPoint = `/patients/${patientId}/prescriptions/${prescriptionId}`;
+  let dataToSend = new FormData();
+
+  return http.post(endPoint, dataToSend);
+}
+
 const PrescriptionsService = {
+  createPrescriptionWithPatient,
   getAll,
   get,
   create,

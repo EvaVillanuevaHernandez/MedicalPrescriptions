@@ -88,8 +88,8 @@ const AddDoctor = () => {
                                     type="text" className="form-control"
                                     id="collegiateNum" required value={doctor.collegiateNum}
                                     onChange={handleInputChange} name="collegiateNum"
-                                    minLength={3} maxLength={40} validations={[required]}  
-                                   
+                                    minLength={3} maxLength={40} 
+                                    pattern="^[0-9]{8,8}[A-Za-z]$"        
                                 />                                
                                
                             </div>
@@ -99,7 +99,8 @@ const AddDoctor = () => {
                                 <input
                                     type="text" className="form-control" id="name"
                                     required value={doctor.name} onChange={handleInputChange}
-                                    name="name" minLength={3} maxLength={40} validations={[required]}
+                                    name="name" minLength={3} maxLength={40} 
+                                    pattern="[A-ZÄËÏÖÜÁÉÍÓÚÂÊÎÔÛÀÈÌÒÙ][a-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ]+"
                                     
                                 />
                             </div>
@@ -110,7 +111,7 @@ const AddDoctor = () => {
                                     type="text" className="form-control" id="surname" required
                                     value={doctor.surname} onChange={handleInputChange}
                                     name="surname" minLength={3} maxLength={40}
-                                    validations={[required]} 
+                                    pattern="[A-ZÄËÏÖÜÁÉÍÓÚÂÊÎÔÛÀÈÌÒÙ][a-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ]+"
                                 />
                             </div>
 
@@ -120,7 +121,7 @@ const AddDoctor = () => {
                                     type="text" className="form-control" id="secondSurname"
                                     required value={doctor.secondSurname} onChange={handleInputChange}
                                     name="secondSurname" minLength={3} maxLength={40}
-                                    validations={[required]}  
+                                    pattern="[A-ZÄËÏÖÜÁÉÍÓÚÂÊÎÔÛÀÈÌÒÙ][a-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ]+"
                                 />
                             </div>
 
@@ -130,7 +131,7 @@ const AddDoctor = () => {
                                     type="text" className="form-control"
                                     id="dni" required value={doctor.dni}
                                     onChange={handleInputChange} name="dni"
-                                    minLength={3} maxLength={40} validations={[required]}
+                                    pattern="^[0-9]{8,8}[A-Za-z]$"   
                                    />
                             </div>
                             <button type="submit" className="btn-submit">
