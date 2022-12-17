@@ -43,7 +43,6 @@ public class PatientController {
     @GetMapping("/patients/{id}")
     public Patient getOne(@PathVariable(value = "id") int id) {
         final Patient db = patientService.get(id);
-        //return patientService.get(id);
         if (db.getImage() != null) {
             return Patient.builder()
                     .nameImg(db.getNameImg())
@@ -68,7 +67,6 @@ public class PatientController {
         }
     }
 
-
     @PostMapping("/patients")
     public void post(Patient patient, @RequestParam(value = "file", required = false) MultipartFile image) throws IOException {
         if (image != null) {
@@ -79,38 +77,25 @@ public class PatientController {
             patient.setTypeImg(image.getContentType());
             patient.setImage(ImageUtility.compressImage(image.getBytes()));
         }
-
         patientService.post(patient);
-
     }
-
 
     @PutMapping("/patients/{id}")
     public void put(Patient patient, @PathVariable(value = "id") int id, @RequestParam(value = "file", required = false) MultipartFile image) throws IOException {
         if (image != null) {
-            System.out.println("image no es nulo");
             String randomID = UUID.randomUUID().toString();
             String filename = randomID.concat(randomID + (image.getOriginalFilename().lastIndexOf(".")));
-
             patient.setNameImg(filename);
             patient.setTypeImg(image.getContentType());
             patient.setImage(ImageUtility.compressImage(image.getBytes()));
-        }else {
-            patient.setNameImg(getOne(id).getNameImg());
-            patient.setTypeImg(getOne(id).getTypeImg());
-            patient.setImage(getOne(id).getImage());
         }
+
         patientService.put(patient, id);
     }
 
     @DeleteMapping("/patients/{id}")
     public void delete(@PathVariable(value = "id") int id) {
         patientService.delete(id);
-
     }
 
-    @PostMapping("/doctors/{idDoctor}/patients/{idPatient}")
-    public void DtoP(@PathVariable(value = "idDoctor") int idDoctor, @PathVariable(value = "idPatient") int idPatient) {
-        patientService.DtoP(idDoctor, idPatient);
-    }
 }

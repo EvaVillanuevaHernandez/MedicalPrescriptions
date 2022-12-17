@@ -15,16 +15,6 @@ const AddDoctor = () => {
         dni: ""
     };
 
-    const required = (value) => {
-        if (!value) {
-            return (
-                <div className="alert alert-danger" role="alert">
-                    This field is required!
-                </div>
-            );
-        }
-    };
-
     const [doctor, setDoctor] = useState(initialDoctorState);
     const [submitted, setSubmitted] = useState(false);
 
@@ -69,7 +59,7 @@ const AddDoctor = () => {
     return (
         <>
             <Header />
-            <style>{'body { background-color: #DEE7E5 ; }'}</style>
+            <style>{'body {  background-color: var(--background); }'}</style>
             <div className="submit-form">
                 {submitted ? (
                     <div className="add">
@@ -88,8 +78,7 @@ const AddDoctor = () => {
                                     type="text" className="form-control"
                                     id="collegiateNum" required value={doctor.collegiateNum}
                                     onChange={handleInputChange} name="collegiateNum"
-                                    minLength={3} maxLength={40} 
-                                    pattern="^[0-9]{8,8}[A-Za-z]$"        
+                                    minLength={3} maxLength={40}           
                                 />                                
                                
                             </div>
@@ -106,7 +95,7 @@ const AddDoctor = () => {
                             </div>
 
                             <div className="form-group">
-                                <label htmlFor="surname">First surname:</label>
+                                <label htmlFor="surname">Surname:</label>
                                 <input
                                     type="text" className="form-control" id="surname" required
                                     value={doctor.surname} onChange={handleInputChange}

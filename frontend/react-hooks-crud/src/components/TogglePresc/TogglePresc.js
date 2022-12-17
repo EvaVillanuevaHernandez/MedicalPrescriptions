@@ -22,13 +22,13 @@ const GroupItem = ({active, text, index, currentPrescriptions})=> {
                     <label>
                       <strong>Name:</strong>
                     </label>{" "}
-                    {currentPrescriptions.patientName}
+                    {currentPrescriptions.patient.name}
                   </div>
                   <div>
                     <label>
                       <strong>Doctor:</strong>
                     </label>{" "}
-                    {currentPrescriptions.doctorName}
+                    {currentPrescriptions.doctor.name}
                   </div>
                   <div>
                     <label>

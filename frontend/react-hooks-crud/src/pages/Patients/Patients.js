@@ -7,6 +7,7 @@ import swal from 'sweetalert';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useParams, useNavigate } from 'react-router-dom';
 import PatientsDataService from "../../services/PatientService";
+import DoctorDataService from "../../services/DoctorService";
 import Header from "../../components/Header/Header";
 import * as BiIcons from 'react-icons/bi';
 
@@ -24,11 +25,27 @@ const Patients = props => {
     dni: "",
     history: "",
     image: "",
+    doctor:"",
     typeImg: ""
   };
 
   const [currentPatient, setCurrentPatient] = useState(initialPatientsState);
+  const [doctor, setDoctor] = useState([]);
 
+  useEffect(() => {
+    retrieveDoctor();
+  }, []);
+
+  const retrieveDoctor = () => {
+    DoctorDataService.getAll()
+
+      .then(response => {
+        setDoctor(response.data);
+      })
+      .catch(e => {
+        console.log(e);
+      })
+  };
   const getPatients = id => {
     PatientsDataService.get(id)
       .then(response => {
@@ -48,6 +65,10 @@ const Patients = props => {
     setCurrentPatient({ ...currentPatient, [name]: value });
   };
 
+  const handleSelectChangeD = event => {
+    setCurrentPatient({ ...currentPatient, doctor: event.target.value });
+  };
+
   const updatePatient = (event) => {
     event.preventDefault();
     let datitos = event.target;
@@ -57,19 +78,19 @@ const Patients = props => {
       surname: datitos["surname"].value,
       secondSurname: datitos["secondSurname"].value,
       dni: datitos["dni"].value,
-      history: datitos["history"].value,
-      
+      history: datitos["history"].value
+     
     }
+    console.log("datitos en update", datitos)
+    
     
     PatientsDataService.update(updatedPatient.id, updatedPatient)
       .then(response => {
-        console.log(response.data);
+        console.log("response data", response.data);
         updateAlert();
         navigate("/patientsList");
-
       })
       .catch(e => {
-
         console.log(e);
       });
   };
@@ -108,7 +129,7 @@ const Patients = props => {
   return (
     <>
       <Header />
-      <style>{'body { background-color: #DEE7E5 ; }'}</style>
+      <style>{'body {  background-color: var(--background); }'}</style>
       <div className="cabecera-pat">
         <p className="patient-name">{`${currentPatient.name} ${currentPatient.surname} ${currentPatient.secondSurname} `}</p>
       </div>
@@ -124,27 +145,44 @@ const Patients = props => {
                       alt=" " className="patient-image" onChange={handleInputChange} />
                   </Form.Group>
 
+                  {/* <Form.Group as={Col} md="4"
+                    className="position-relative">
+
+                    <Form.Label>Doctor:</Form.Label>
+                    <select id="doctor" name="doctor"
+                      onChange={handleSelectChangeD}
+                      className="form-control"
+                      required>
+                        <option>- -</option>
+                      {doctor.map((doctor, index) => (
+                        <option key={index} value={doctor.id}>{doctor.name}</option>
+                      ))}
+                    </select>
+                  </Form.Group> */}
+
                   <Form.Group as={Col} md="4"
                     className="position-relative">
                     <Form.Label> Name:</Form.Label>
                     <Form.Control type="text"
                       className="form-control"
-                      id="name" name="name"
+                      id="name" name="name"  
                       value={currentPatient.name}
-                      onChange={handleInputChange} />
+                      onChange={handleInputChange} required
+                      pattern="[A-ZÄËÏÖÜÁÉÍÓÚÂÊÎÔÛÀÈÌÒÙ][a-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ]+"/>
                   </Form.Group>
 
                   <Form.Group as={Col} md="4"
                     className="position-relative">
 
-                    <Form.Label>Surname:</Form.Label>
+                    <Form.Label>First surname:</Form.Label>
                     <Form.Control
                       type="text"
                       className="form-control"
                       id="surname"
                       name="surname"
                       value={currentPatient.surname}
-                      onChange={handleInputChange} />
+                      onChange={handleInputChange} 
+                      pattern="[A-ZÄËÏÖÜÁÉÍÓÚÂÊÎÔÛÀÈÌÒÙ][a-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ]+"/>
                   </Form.Group>
                 </Row>
 
@@ -158,7 +196,8 @@ const Patients = props => {
                       id="secondSurname"
                       name="secondSurname"
                       value={currentPatient.secondSurname}
-                      onChange={handleInputChange} />
+                      onChange={handleInputChange} required
+                      pattern="[A-ZÄËÏÖÜÁÉÍÓÚÂÊÎÔÛÀÈÌÒÙ][a-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ]+"/>
                   </Form.Group>
 
                   <Form.Group as={Col} md="4"
@@ -170,8 +209,8 @@ const Patients = props => {
                       id="dni"
                       name="dni"
                       value={currentPatient.dni}
-                      onChange={handleInputChange}
-                    />
+                      onChange={handleInputChange} required
+                      pattern="^[0-9]{8,8}[A-Za-z]$"/>
                   </Form.Group>
                 </Row>
 
@@ -183,7 +222,7 @@ const Patients = props => {
                     id="history"
                     name="history"
                     value={currentPatient.history}
-                    onChange={handleInputChange}
+                    onChange={handleInputChange} required
                   />
                 </Form.Group>
 

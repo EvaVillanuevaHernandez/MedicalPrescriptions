@@ -12,6 +12,5 @@ public interface IPatientService {
 	public void post(Patient patient);
 	public void put(Patient patient, int id);
 	public void delete (int id);
-	public void DtoP(int idDoctor, int idPatient);
 
 }

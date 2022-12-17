@@ -12,7 +12,6 @@ const PatientsList = () => {
   const [currentIndex] = useState(-1);
   const [searchPatientName, setSearchPatientName] = useState("");
 
-
   useEffect(() => {
     retrievePatients();
   }, []);
@@ -35,7 +34,7 @@ const PatientsList = () => {
 
   return (
     <>
-      <style>{'body { background-color: #DEE7E5 ; }'}</style>
+     <style>{'body { background-color: var(--background); }'}</style>
       <IconContext.Provider value={{ color: '#231F20' }}>
         <Header />
         <div className="patients">

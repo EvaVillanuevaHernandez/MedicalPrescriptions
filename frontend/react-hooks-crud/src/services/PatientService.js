@@ -16,6 +16,7 @@ const create = data => {
   dataToSend.append("surname", data.surname);
   dataToSend.append("secondSurname", data.secondSurname);
   dataToSend.append("file", data.image);
+  dataToSend.append("doctor", data.doctor);
   // dataToSend.append("nameImg", data.nameImg);
   // dataToSend.append("typeImg", data.typeImg);
   return http.post("/patients", dataToSend);

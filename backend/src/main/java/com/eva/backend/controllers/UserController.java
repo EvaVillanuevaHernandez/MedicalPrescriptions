@@ -47,9 +47,5 @@ public void delete(@PathVariable(value="id")int id) {
 }
 
 
-@PostMapping("/doctors/{idDoctor}/users/{idUser}")
-public void DtoU(@PathVariable(value="idDoctor") int idDoctor,@PathVariable(value="idUser")int idUser) {
-	userService.DtoU(idDoctor,idUser);
-	}
 }
 

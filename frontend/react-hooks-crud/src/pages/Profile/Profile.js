@@ -6,17 +6,10 @@ import './Profile.scss';
 const Profile = () => {
   const currentUser = AuthService.getCurrentUser();
 
-  const initialProfileState = {
-    name: "",
-    surname: "",
-    secondSurname: "",
-    dni: ""
-
-  };
   return (
     <>
       <Header />
-      <style>{'body { background-color: #DEE7E5 ; }'}</style>
+      <style>{'body {  background-color: var(--background); }'}</style>
       <div className="container">
         <header className="jumbotron">
           <h3>

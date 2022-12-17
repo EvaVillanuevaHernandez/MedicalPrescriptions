@@ -6,14 +6,15 @@ import { useNavigate } from 'react-router-dom';
 import * as AiIcons from 'react-icons/ai';
 import './AddPrescription.scss';
 import PatientDataService from "../../services/PatientService";
+import DoctorDataService from "../../services/DoctorService";
 
 const AddPrescription = () => {
   let navigate = useNavigate();
 
   const initialPrescriptionState = {
     id: null,
-    patientName: "",
-    doctorName: "",
+    patient: "",
+    doctor: "",
     posology: "",
     date: "",
     medicine: ""
@@ -22,8 +23,8 @@ const AddPrescription = () => {
   const [prescription, setPrescriptions] = useState(initialPrescriptionState);
   const [submitted, setSubmitted] = useState(false);
   const [patient, setPatient] = useState([]);
-  const [patientID, setPatientID] = useState();
-  
+  const [doctor, setDoctor] = useState([]);
+ 
   
   useEffect(() => {
     retrievePatient();
@@ -34,7 +35,22 @@ const AddPrescription = () => {
    
       .then(response => {
         setPatient(response.data);
-        console.log("AAAAAAAAA",response.data);     
+        console.log("Pacientes",response.data);     
+      })
+      .catch(e => {
+        console.log(e);
+      })
+  };
+
+  useEffect(() => {
+    retrieveDoctor();
+  }, []);
+  const retrieveDoctor = () => {
+    DoctorDataService.getAll()
+   
+      .then(response => {
+        setDoctor(response.data);
+        console.log("doctores",response.data);     
       })
       .catch(e => {
         console.log(e);
@@ -42,14 +58,15 @@ const AddPrescription = () => {
   };
 
 
-  const handleSelectChange = event => {
-     const {value} = event.target.options[event.target.selectedIndex];   
-    setPatientID( value );
-    console.log("Este:", value)
-    
-
+  const handleSelectChange = event => { 
+    setPrescriptions({ ...prescription, doctor:event.target.value });
+     console.log("value",doctor)
   };
 
+  const handleSelectChangeP = event => { 
+    setPrescriptions({ ...prescription, patient:event.target.value });
+ 
+  };
 
   const handleInputChange = event => {
     const { name, value } = event.target;
@@ -59,8 +76,8 @@ const AddPrescription = () => {
   const savePrescription = (event) => {
     event.preventDefault();
     var data = {
-      patientName: prescription.name,
-      doctorName: prescription.doctorName,
+      patient: prescription.patient,
+      doctor: prescription.doctor,
       posology: prescription.posology,
       date: prescription.date,
       medicine: prescription.medicine
@@ -68,26 +85,20 @@ const AddPrescription = () => {
     };
 
     PrescriptionsDataService.create(data)
-      .then(response => {
-       console.log(response)
-        PrescriptionsDataService.createPrescriptionWithPatient(response.data,event.value ).then(() => {         
+      .then(response => {      
           setPrescriptions({
             id: response.data.id,
-            patientName: data.patientName,
-            doctorName: data.doctorName,
-            posology: data.posology,
-            date: data.date,
-            medicine: data.medicine,
+            patient: response.data,
+            doctor: response.data,
+            posology:response.data.posology,
+            date: response.data.date,
+            medicine: response.data.medicine,
           });
           setSubmitted(true);
           console.log(response.data);
         }).catch(e => {
           console.log(e);
         });
-      })
-      .catch(e => {
-        console.log(e);
-      });
 
   };
 
@@ -100,7 +111,7 @@ const AddPrescription = () => {
   return (
     <>
       <Header />
-      <style>{'body { background-color: #DEE7E5 ; }'}</style>
+      <style>{'body {  background-color: var(--background); }'}</style>
       <IconContext.Provider value={{ color: '#231F20' }}>
         <div className="add-form" >
           {submitted ? (
@@ -115,16 +126,11 @@ const AddPrescription = () => {
             <div className="container-addPr">
               <form onSubmit={savePrescription}>
                 <div className="form-group">
-                  <label htmlFor="patientName">Name:</label>{/*
-                  <input type="text" className="form-control" id="patientName"
-                    required value={prescription.patientName} onChange={handleInputChange} name="patientName"
-                    minLength={3} maxLength={40}
-                    pattern="[A-ZÄËÏÖÜÁÉÍÓÚÂÊÎÔÛÀÈÌÒÙ][a-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ]+"
-                  /> */}
-                  <select id="patientName" name="patientName" onChange={handleSelectChange} className="form-control">
+                  <label htmlFor="patientName">Name:</label>
+                  <select required id="patient" name="patient" onChange={handleSelectChangeP} className="form-control" >
+                  <option value="">- -</option>
                     {patient.map((patient, index) => (
-                      <option key={index} value={patient.id}>{patient.name}</option>
-                    
+                      <option key={index}  value={patient.id}>{patient.name}</option>     
                     ))}
                    
                   </select>
@@ -132,11 +138,13 @@ const AddPrescription = () => {
 
                 <div className="form-group">
                   <label htmlFor="doctorName">Doctor:</label>
-                  <input type="text" className="form-control" id="doctorName"
-                    required value={prescription.doctorName} onChange={handleInputChange} name="doctorName"
-                    minLength={3} maxLength={40}
-                    pattern="[A-ZÄËÏÖÜÁÉÍÓÚÂÊÎÔÛÀÈÌÒÙ][a-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ]+"
-                  />
+                  <select required id="doctor" name="doctor" onChange={handleSelectChange} className="form-control ">
+                  <option> - - </option>
+                    {doctor.map((doctor, index) => (                   
+                      <option key={index}  value={doctor.id}>{doctor.name}</option>                     
+                    ))}
+                   
+                  </select>
                 </div>
 
                 <div className="form-group">
@@ -149,7 +157,7 @@ const AddPrescription = () => {
                 <div className="form-group">
                   <label htmlFor="date">Date:</label>
                   <input type="text" className="form-control" id="date"
-                    requiredvalue={prescription.date} onChange={handleInputChange} name="date"
+                    required value={prescription.date} onChange={handleInputChange} name="date"
                     minLength={3} maxLength={40}
                     pattern="^(19|20)(((([02468][048])|([13579][26]))-02-29)|(\d{2})-((02-((0[1-9])|1\d|2[0-8]))|((((0[13456789])|1[012]))-((0[1-9])|((1|2)\d)|30))|(((0[13578])|(1[02]))-31)))$"
                   />
@@ -160,9 +168,8 @@ const AddPrescription = () => {
                   <input type="text" className="form-control" id="medicine"
                     required value={prescription.medicine} onChange={handleInputChange} name="medicine"
                     minLength={3} maxLength={40}
-                    pattern="[A-ZÄËÏÖÜÁÉÍÓÚÂÊÎÔÛÀÈÌÒÙ][a-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ]+" />
+                    pattern="[A-ZÄËÏÖÜÁÉÍÓÚÂÊÎÔÛÀÈÌÒÙ][a-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ]+"/>
                 </div>
-
                 <button type="submit" className="btn-submit">
                   Submit
                 </button>

@@ -18,7 +18,6 @@ const getAdminBoard = () => {
 const UserService = {
   getPublicContent,
   getUserBoard,
-  getModeratorBoard,
   getAdminBoard,
 };
 

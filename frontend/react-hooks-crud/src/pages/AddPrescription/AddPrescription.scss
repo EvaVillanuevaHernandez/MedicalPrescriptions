@@ -3,6 +3,17 @@ body {
   position: relative;
   min-height: 100vh;
 }
+
+.form-control {
+  display: flex;
+  border-radius: 1ex;
+  background-color: #DEE7E5;
+  border: 1px solid #706e6e;
+  width: 90%;
+  height: 30px;
+  padding: 0;
+  padding-left: 5px;
+}
   .add-form{
     display:relative;
     align-items: center;

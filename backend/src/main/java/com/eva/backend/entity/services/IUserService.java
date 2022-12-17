@@ -11,5 +11,4 @@ public interface IUserService {
 	public User post(User user);
 	public void put(User user, int userId);
 	public void delete (int userId);
-	public void DtoU(int idDoctor, int idUser);
 }

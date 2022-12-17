@@ -44,6 +44,9 @@ public class PatientServiceImpl implements IPatientService {
 				patient.setNameImg(x.getNameImg());
 				patient.setTypeImg(x.getTypeImg());
 			}
+			if(patient.getDoctor() == null){
+				patient.setDoctor(x.getDoctor());
+			}
 			patientDao.save(patient);
 		});
 		
@@ -54,17 +57,6 @@ public class PatientServiceImpl implements IPatientService {
 		patientDao.deleteById(id);
 		
 	}
-	
-	@Override
-	public void DtoP(int idDoctor, int idPatient) {
-		patientDao.findById(idPatient).ifPresent((y)->{
-		doctorDao.findById(idDoctor).ifPresent((x)->{
-			y.setDoctor(x);
-			patientDao.save(y);
-		});
-	});
-}
-
 
 }
 	

@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "doctor")
 public class Doctor implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,18 +28,18 @@ public class Doctor implements Serializable {
 
 	private String secondSurname;
 	private String dni;
-	
+
 	@JsonIgnore
 	@OneToMany(mappedBy="doctor")
 	private List<Prescription> prescriptions;
-	
+
 	@JsonIgnore
 	@OneToMany(mappedBy="doctor")
 	private List<Prescription> patients;
-	
+
 	@OneToOne
 	private User user;
-	
+
 	public Doctor(int id, String collegiateNum, String name, String surname,String secondSurname, String dni) {
 		super();
 		this.id = id;
@@ -49,11 +49,11 @@ public class Doctor implements Serializable {
 		this.secondSurname = secondSurname;
 		this.dni = dni;
 	}
-	
+
 	public Doctor() {
 		super();
 	}
-	
+
 	public User getUser() {
 		return user;
 	}
@@ -99,7 +99,7 @@ public class Doctor implements Serializable {
 		this.dni = dni;
 	}
 
-//FK	
+	//FK
 	public List<Prescription> getPrescriptions() {
 		return prescriptions;
 	}
@@ -107,7 +107,7 @@ public class Doctor implements Serializable {
 	public void setPrescriptions(List<Prescription> prescriptions) {
 		this.prescriptions = prescriptions;
 	}
-	
+
 	public List<Prescription> getPatients() {
 		return patients;
 	}
@@ -115,8 +115,5 @@ public class Doctor implements Serializable {
 		this.patients = patients;
 	}
 
-	
-	
-	
-	
+
 }

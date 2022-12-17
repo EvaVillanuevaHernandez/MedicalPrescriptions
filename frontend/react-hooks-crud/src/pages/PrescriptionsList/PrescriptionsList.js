@@ -35,7 +35,7 @@ const PrescriptionsList = () => {
 
   return (
     <>
-      <style>{'body { background-color: #DEE7E5 ; }'}</style>
+      <style>{'body {  background-color: var(--background); }'}</style>
       <IconContext.Provider value={{ color: '#231F20' }}>
         <Header />
         <div className="prescriptions">
@@ -57,9 +57,9 @@ const PrescriptionsList = () => {
             <div className="general">
               {
                 prescriptions &&
-                prescriptions.filter(prescriptions => prescriptions.patientName.toLowerCase().search(searchPatientName.toLowerCase()) !== -1).map((p, index) => (
+                prescriptions.filter(prescriptions => prescriptions.patient.name.toLowerCase().search(searchPatientName.toLowerCase()) !== -1).map((p, index) => (
                   <TogglePresc active={index === currentIndex}
-                    text={`${p.patientName}`}
+                    text={`${p.patient.name}`}
                     index={index} key={index}
                     currentPrescriptions={p} />
                 ))

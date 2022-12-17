@@ -26,9 +26,6 @@ private static final long serialVersionUID =1L;
 		
 		@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 		private Date date;
-		
-		private String patientName;
-		private String doctorName;
 		private String medicine;
 		
 		@ManyToOne
@@ -61,22 +58,6 @@ private static final long serialVersionUID =1L;
 			this.date = date;
 		}
 
-		public String getPatientName() {
-			return patientName;
-		}
-
-		public void setPatientName(String patientName) {
-			this.patientName = patientName;
-		}
-
-		public String getDoctorName() {
-			return doctorName;
-		}
-
-		public void setDoctorName(String doctorName) {
-			this.doctorName = doctorName;
-		}
-
 		public String getMedicine() {
 			return medicine;
 		}
@@ -102,14 +83,12 @@ private static final long serialVersionUID =1L;
 			this.patient = patient;
 		}
 
-		public Prescription(int id, String posology, Date date, String patientName, String doctorName, String medicine,
+		public Prescription(int id, String posology, Date date, String medicine,
 				String doctorId) {
 			super();
 			this.id = id;
 			this.posology = posology;
 			this.date = date;
-			this.patientName = patientName;
-			this.doctorName = doctorName;
 			this.medicine = medicine;
 			
 			

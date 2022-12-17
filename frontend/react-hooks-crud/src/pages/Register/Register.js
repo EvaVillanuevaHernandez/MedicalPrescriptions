@@ -105,7 +105,7 @@ const Register = () => {
 
         <>
             <Header/>
-            <style>{'body { background-color:#DEE7E5;}'}</style>
+            <style>{'body {  background-color: var(--background); }'}</style>
             <div className="col-md-12">
                 <div className="register">
                  

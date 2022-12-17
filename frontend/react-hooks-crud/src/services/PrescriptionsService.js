@@ -10,9 +10,9 @@ const get = id => {
 
 const create = data => {
   let dataToSend = new FormData();
-  // dataToSend.append("patientName", data.patientId);
-  dataToSend.append("patientName", data.patientName);
-  dataToSend.append("doctorName", data.doctorName);
+ console.log("cabra",data.doctor);
+  dataToSend.append("patient", data.patient);
+  dataToSend.append("doctor", data.doctor);
   dataToSend.append("date", data.date);
   dataToSend.append("medicine", data.medicine);
   dataToSend.append("posology", data.posology);
@@ -21,8 +21,8 @@ const create = data => {
 
 const update = (id, data) => {
   let dataToSend = new FormData();
-  dataToSend.append("patientName", data.patientName);
-  dataToSend.append("doctorName", data.doctorName);
+  dataToSend.append("patient", data.patient);
+  dataToSend.append("doctor", data.doctor);
   dataToSend.append("date", data.date);
   dataToSend.append("posology", data.posology);
   dataToSend.append("medicine", data.medicine);
@@ -40,15 +40,15 @@ const removeAll = () => {
 //   return http.get(`/prescriptions?patientName=${patientName}`);
 // };
 
-const createPrescriptionWithPatient = (prescriptionId, patientId) => {
-  let endPoint = `/patients/${patientId}/prescriptions/${prescriptionId}`;
-  let dataToSend = new FormData();
+// const createPrescriptionWithPatient = (prescriptionId, patientId) => {
+//   let endPoint = `/patients/${patientId}/prescriptions/${prescriptionId}`;
+//   let dataToSend = new FormData();
 
-  return http.post(endPoint, dataToSend);
-}
+//   return http.post(endPoint, dataToSend);
+// }
 
 const PrescriptionsService = {
-  createPrescriptionWithPatient,
+  // createPrescriptionWithPatient,
   getAll,
   get,
   create,

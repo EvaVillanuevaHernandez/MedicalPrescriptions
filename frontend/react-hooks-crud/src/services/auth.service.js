@@ -3,23 +3,27 @@ import axios from "axios";
 const API_URL = "http://localhost:8080/api/auth/";
 
 const register = (username, email, password) => {
-  //const encodedPassword = btoa(password);
+  // const encodedPassword = btoa(password);
+  // const encodedUsername = btoa(username);
   return axios.post(API_URL + "signup", {
-    username,
+     username,
+    //username:encodedUsername,
     email,
     password,
-    //  password: encodedPassword,
+    //password: encodedPassword,
   });
 };
 
 const login = (username, password) => {
-  const encodedPassword = btoa(password);
+  //const encodedPassword = btoa(password);
+  //const encodedUsername = btoa(username);
 
   return axios
     .post(API_URL + "signin", {
       username,
+      //username:encodedUsername,
       password,
-      // password: encodedPassword,
+      //password: encodedPassword,
     })
     .then((response) => {
       if (response.data.accessToken) {

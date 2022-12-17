@@ -49,13 +49,5 @@ public class UserServiceImpl implements IUserService {
 		userDao.deleteById(id);
 		
 	}
-	@Override
-	public void DtoU(int idDoctor,int idUser) {
-		userDao.findById(idUser).ifPresent((y)->{
-			doctorDao.findById(idDoctor).ifPresent((x)->{
-				y.setDoctor(x);
-				userDao.save(y);
-			});
-		});
-}
+
 }

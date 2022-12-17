@@ -76,7 +76,7 @@ const Login = () => {
     <>
       <HeaderLogin />
 
-      <style>{'body { background-color:#DEE7E5;}'}</style>
+      <style>{'body {  background-color: var(--background); }'}</style>
 
       <div>
 

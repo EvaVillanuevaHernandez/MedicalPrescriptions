@@ -47,14 +47,4 @@ public void delete(@PathVariable(value="id")int id) {
 	prescriptionService.delete(id);
 }
 
-@PostMapping("/doctors/{idDoctor}/prescriptions/{idPrescription}")
-public void DtoP(@PathVariable(value="idDoctor") int idDoctor,
-				 @PathVariable(value="idPrescription")int idPrescription) {
-	prescriptionService.DtoP(idDoctor,idPrescription);
 }
-@PostMapping("/patients/{idPatient}/prescriptions/{idPrescription}")
-public void PtoP(@PathVariable(value="idPatient") int idPatient,
-				 @PathVariable(value="idPrescription")int idPrescription) {
-	prescriptionService.PtoP( idPatient,  idPrescription);;
-
-}}

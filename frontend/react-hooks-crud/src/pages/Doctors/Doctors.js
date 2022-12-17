@@ -111,7 +111,7 @@ const Doctors = props => {
     return (
         <>
             <Header />
-            <style>{'body { background-color: #DEE7E5 ; }'}</style>
+            <style>{'body {  background-color: var(--background); }'}</style>
             <div className="cabecera">
                 <p className="doctor-name">{`${currentDoctor.name} ${currentDoctor.surname}`}</p>
             </div>
@@ -129,8 +129,9 @@ const Doctors = props => {
                                         className="form-control"
                                         id="name" name="name"
                                         value={currentDoctor.name}
-                                        onChange={handleInputChange} />
-
+                                        onChange={handleInputChange} 
+                                        required 
+                                        pattern="[A-ZÄËÏÖÜÁÉÍÓÚÂÊÎÔÛÀÈÌÒÙ][a-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ]+"/>
                                 </Form.Group>
 
                                 <Form.Group as={Col} md="4"
@@ -143,7 +144,9 @@ const Doctors = props => {
                                         id="surname"
                                         name="surname"
                                         value={currentDoctor.surname}
-                                        onChange={handleInputChange} />
+                                        onChange={handleInputChange}
+                                        required 
+                                        pattern="[A-ZÄËÏÖÜÁÉÍÓÚÂÊÎÔÛÀÈÌÒÙ][a-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ]+"/> 
                                 </Form.Group>
                             </Row>
                             <Form.Group as={Col} md="4"
@@ -156,7 +159,9 @@ const Doctors = props => {
                                     id="secondSurname"
                                     name="secondSurname"
                                     value={currentDoctor.secondSurname}
-                                    onChange={handleInputChange} />
+                                    onChange={handleInputChange} 
+                                    required 
+                                    pattern="[A-ZÄËÏÖÜÁÉÍÓÚÂÊÎÔÛÀÈÌÒÙ][a-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ]+"/> 
                             </Form.Group>
 
 
@@ -182,8 +187,7 @@ const Doctors = props => {
                                     id="collegiateNum"
                                     name="collegiateNum"
                                     value={currentDoctor.collegiateNum}
-                                    onChange={handleInputChange}
-                                    pattern="/[0-9]{7,8}[A-Z]/"
+                                    onChange={handleInputChange}             
                                 />
                             </Form.Group>
 
