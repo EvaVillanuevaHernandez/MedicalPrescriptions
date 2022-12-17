@@ -96,7 +96,6 @@ Don't forget to start the frontend too!!
   _$ npm start_
 
 ---
-
 ## Data model
 
  - Entities and attributes.
@@ -184,33 +183,40 @@ Relational Model:
  UML diagram:
 
 ![UML](https://user-images.githubusercontent.com/95490721/206920186-09be84cb-4711-401e-85fc-231f59735e04.png)
+
+---
+## Postman
+
+https://documenter.getpostman.com/view/23478563/2s8YzZNeDX
+
 ---
 ## User requirements
 
 ###### Platform:
- **P1** This app comes as a web app as it is understood to be made to be used in the workplace.
- **P2** In any case, it can also be used on mobile or tablet devices since it is responsive.
+ - **P1** This app comes as a web app as it is understood to be made to be used in the workplace.
+ - **P2** In any case, it can also be used on mobile or tablet devices since it is responsive.
 
 ###### Access:
- **A1** The app has a guest screen that can be accessed without being logged in.
- **A2** In order to use the page you must be registered as a doctor, an administrator will be in charge of registering the doctors previously.
- **A3** To add, delete or modify the information of the doctors you must be an administrator.
+ - **A1** The app has a guest screen that can be accessed without being logged in.
+ - **A2** In order to use the page you must be registered as a doctor, an administrator will be in charge of registering the doctors previously.
+ - **A3** To add, delete or modify the information of the doctors you must be an administrator.
 
 ###### Interfaces:
 
- **I1** The app has 2 main interfaces that show lists of both patients and prescriptions.
- **I2** The user registration and doctor registration interfaces will be available only for administrators.
- **I3** In the main interfaces it will be possible to search patients by name.
+ - **I1** The app has 2 main interfaces that show lists of both patients and prescriptions.
+ - **I2** The user registration and doctor registration interfaces will be available only for administrators.
+ - **I3** In the main interfaces it will be possible to search patients by name.
 
 ###### Actions:
 
- **A1** User actions will be accompanied by feedback andnotifications.
- **A2** When entering data in the form, it is validated that the information is entered correctly, notifying the user if there is an error.
+ - **A1** User actions will be accompanied by feedback andnotifications.
+ - **A2** When entering data in the form, it is validated that the information is entered correctly, notifying the user if there is an error.
 
 ###### Validations:
 
-**V1** When creating a prescription or patient users must enter the information correctly. 
-**V2** If this information is wrong, the user will receive an alert.
+- **V1** When creating a prescription or patient users must enter the information correctly. 
+- **V2** If this information is wrong, the user will receive an alert.
+
 ---
 ## Use cases.
 
@@ -221,6 +227,11 @@ Below we can see the use case diagram, this is reduced to the actions that the d
 As we can see in the image, when consulting a prescription, the doctor can modify, update or delete it, the same can be done with his patients.
 
 In the case of the administrator, its only function is to consult the doctors that are in the system, delete them, modify them or introduce new ones.
+
+---
+## First design
+
+https://www.figma.com/file/7Qc0eVAa4K3pZEsE7mr6Jk/Centro--Artemisa?node-id=42%3A1680&t=uXte4oUDStnNrsMg-1
 
 ---
 ## Usability and accessibility :eyes:
@@ -263,6 +274,32 @@ Regarding usability elements, we have a clear and simple clean design, adapted t
  - Design adaptable to all kinds of devices.
 
 ---
+## Tech stack
+
+- React JS
+- Node v16.14.2
+- SpringBoot v2.5.7
+- Hibernate
+
+---
+## Technology comparison
+
+
+---
+## Planning
+
+
+---
+## Conclusion
+
+---
+## Links
+
+- https://www.w3schools.com/
+- https://reactstrap.github.io/?path=/story/home-installation--page
+- https://spring.io/projects/spring-boot
+- https://reactstrap.github.io/?path=/story/home-installation--page
+- https://reactjs.org/docs/getting-started.html
 
 ## Autor/es :woman_technologist:
 
