@@ -16,9 +16,8 @@ function Switch() {
     <div className="container-switch">
       
       <label className="switch">
-        <input  type="checkbox" onChange={handleChange} checked={theme === 'dark'} />
-        <span className="slider"></span>
-        <span>Change theme </span>
+        <input type="checkbox" onChange={handleChange} checked={theme === 'dark'} />
+        <a>Change theme </a>
       </label>
     </div>
   );

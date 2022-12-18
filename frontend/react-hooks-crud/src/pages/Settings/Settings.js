@@ -1,5 +1,6 @@
 import React from "react";
 import './Settings.scss';
+import Footer from "../../components/Footer/Footer";
 import HeaderLogin from "../../components/Header/HeaderLogin";
 import HeaderSett from "../../components/Header/HeaderSett";
 import * as GiIcons from 'react-icons/gi';
@@ -33,6 +34,8 @@ function Settings() {
             <div id="elipse-4">
                 <img src="images/elipse4.png" alt="elipse4" />
             </div>
+
+            <Footer/>
         </>
 
     );

@@ -30,22 +30,6 @@ const Patients = props => {
   };
 
   const [currentPatient, setCurrentPatient] = useState(initialPatientsState);
-  const [doctor, setDoctor] = useState([]);
-
-  useEffect(() => {
-    retrieveDoctor();
-  }, []);
-
-  const retrieveDoctor = () => {
-    DoctorDataService.getAll()
-
-      .then(response => {
-        setDoctor(response.data);
-      })
-      .catch(e => {
-        console.log(e);
-      })
-  };
   const getPatients = id => {
     PatientsDataService.get(id)
       .then(response => {
@@ -65,9 +49,6 @@ const Patients = props => {
     setCurrentPatient({ ...currentPatient, [name]: value });
   };
 
-  const handleSelectChangeD = event => {
-    setCurrentPatient({ ...currentPatient, doctor: event.target.value });
-  };
 
   const updatePatient = (event) => {
     event.preventDefault();
@@ -144,22 +125,7 @@ const Patients = props => {
                     <img src={`data:${currentPatient.typeImg};base64,${currentPatient.image}`}
                       alt=" " className="patient-image" onChange={handleInputChange} />
                   </Form.Group>
-
-                  {/* <Form.Group as={Col} md="4"
-                    className="position-relative">
-
-                    <Form.Label>Doctor:</Form.Label>
-                    <select id="doctor" name="doctor"
-                      onChange={handleSelectChangeD}
-                      className="form-control"
-                      required>
-                        <option>- -</option>
-                      {doctor.map((doctor, index) => (
-                        <option key={index} value={doctor.id}>{doctor.name}</option>
-                      ))}
-                    </select>
-                  </Form.Group> */}
-
+                  
                   <Form.Group as={Col} md="4"
                     className="position-relative">
                     <Form.Label> Name:</Form.Label>
@@ -187,6 +153,7 @@ const Patients = props => {
                 </Row>
 
                 <Row className="mb-3">
+                  
                   <Form.Group as={Col} md="4"
                     className="position-relative">
                     <Form.Label>Second surname:</Form.Label>
@@ -231,9 +198,9 @@ const Patients = props => {
               <button type="submit" className="update-button" >
                 <BiIcons.BiEditAlt />Update
               </button>
+
             </Form>
 
-            
             <button className="delete-button" onClick={deletePatient}>
                 <BiIcons.BiTrashAlt /> Delete
               </button>

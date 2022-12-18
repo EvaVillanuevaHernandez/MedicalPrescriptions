@@ -10,12 +10,11 @@ const Profile = () => {
     <>
       <Header />
       <style>{'body {  background-color: var(--background); }'}</style>
-      <div className="container">
-        <header className="jumbotron">
-          <h3>
-            <strong>{currentUser.username}</strong>
-          </h3>
-        </header>
+
+      <div className="container">       
+        <h3>
+          <strong>{currentUser.username}</strong>
+        </h3>
         <p>
           <strong>Id:</strong> {currentUser.id}
         </p>
@@ -25,9 +24,10 @@ const Profile = () => {
             currentUser.roles.map((role, index) => <li key={index}>{role}</li>)}
         </ul>
       </div>
+
       <div id="elipse5">
-              <img src="/images/elipse5.png" alt="" />
-            </div>
+        <img src="/images/elipse5.png" alt="" />
+      </div>
     </>
 
   );
