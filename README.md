@@ -308,32 +308,42 @@ For a comparison of technologies I have chosen the most similar and used. Angula
 
 - Spring Boot allows a quick start of a productive application. The idea behind Spring Boot is that it's very easy to run, so it minimizes the amount of hassle that goes into getting an application up and running.
 
--Spring Boot is multi threaded. This is very useful when dealing with long or repetitive operations. When the main thread is consumed, others are used simultaneously.
+Node Pros:
 
-Node Pros
-
+```
 - Javascript Community: Growing fast.
 - Light, fast
 - Single-threaded — low memory utilization
 - Great for I/O tasks
 - Npm is constantly growing.
+```
+Spring Boot Pros:
 
+```
+- Java Community: mature and thriving.
+- Java is typed (Check at compile time)
+- Long-term support and maintainability.
+- Support for multiple threads.
+- Easy to use many dependencies.
+```
 
 ---
 ## Planning 📋
 
 To plan this project I have used the trello tool, here I leave the links of each subject:
 
-```
 PGV:
 https://trello.com/invite/b/xTtoTD4D/ATTI7b50b2cc95127f6e1c2aff30457ba617EB846ECD/pgv
+
 AED:
 https://trello.com/invite/b/ouaTYfaw/ATTI05842126d90eea228ce0a244e44e9cce7544A597/aed
+
 PGL:
 https://trello.com/invite/b/RPDepCZv/ATTI611aa29bdfbf257aff7ca453c40928841DD86B8C/pgl
+
 DAD:
 https://trello.com/invite/b/YqbhDTRE/ATTI157b2bfcec83a90083421e76af8a8069B34DF0FF/dad
-```
+
 
 ---
 ## Conclusion :bulb:
