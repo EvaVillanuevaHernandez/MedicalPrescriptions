@@ -3,20 +3,20 @@
 ## Tabla de contenidos:
 ---
 
-- [Description and context](#Description-and-context)
-- [Installation guide](#installation-guide)
-- [Data model](#data-model)
-- [Postman](#postman)
-- [User requirements](#user-requirements)
-- [Use Cases](#use-cases)
-- [First design](#first-design)
-- [Usability and accessibility](#usability-and-accessibility)
-- [Tech stack](#tech-stack)
-- [Technology comparison](#technology-comparison)
-- [Planning](#planning)
-- [Conclusion](#conclusion)
-- [Links](#links)
-- [Author](#author)
+- [Description and context](#Description-and-context).
+- [Installation guide](#installation-guide).
+- [Data model](#data-model).
+- [Postman](#postman).
+- [User requirements](#user-requirements).
+- [Use Cases](#use-cases).
+- [First design](#first-design).
+- [Usability and accessibility](#usability-and-accessibility).
+- [Tech stack](#tech-stack).
+- [Technology comparison](#technology-comparison).
+- [Planning](#planning).
+- [Conclusion](#conclusion).
+- [Links](#links).
+- [Author](#author).
 
 ## Description and context
 
