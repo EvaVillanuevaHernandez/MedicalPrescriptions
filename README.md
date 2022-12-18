@@ -1,4 +1,4 @@
-<h1 align="center"> Medical Prescriptions</h1>
+`<h1 align="center"> Medical Prescriptions</h1>
 
 ## Tabla de contenidos:
 ---
@@ -59,13 +59,19 @@ Cool! Now open a terminal in the new folder.
 
 Once you are in the terminal of your folder execute the following commands:
 
+```
  _$git init_
+ ```
  
+```
  _$ git clone https://github.com/EvaVillanuevaHernandez/MedicalPrescriptions.git_
+```
 
 Install the dependencies and run the app locally:
- 
+
+```
 _$ npm install_
+```
 
 There is still a bit to start using the application, now we must configure the backend.
 
@@ -279,10 +285,10 @@ Regarding usability elements, we have a clear and simple clean design, adapted t
 ---
 ## Tech stack
 
-- React JS
-- Node v16.14.2
-- SpringBoot v2.5.7
-- Hibernate
+* [React JS](https://es.reactjs.org/)
+* [Node v16.14.2](https://nodejs.org/en/)
+* [Spring Boot v2.5.7](https://spring.io/projects/spring-boot)
+* [Hibernate](https://hibernate.org/)
 
 ---
 ## Technology comparison
@@ -314,14 +320,28 @@ Node Pros
 
 
 ---
-## Planning
+## Planning 📋
 
+To plan this project I have used the trello tool, here I leave the links of each subject:
+
+```
+PGV:
+https://trello.com/invite/b/xTtoTD4D/ATTI7b50b2cc95127f6e1c2aff30457ba617EB846ECD/pgv
+AED:
+https://trello.com/invite/b/ouaTYfaw/ATTI05842126d90eea228ce0a244e44e9cce7544A597/aed
+PGL:
+https://trello.com/invite/b/RPDepCZv/ATTI611aa29bdfbf257aff7ca453c40928841DD86B8C/pgl
+DAD:
+https://trello.com/invite/b/YqbhDTRE/ATTI157b2bfcec83a90083421e76af8a8069B34DF0FF/dad
+```
 
 ---
-## Conclusion
+## Conclusion :bulb:
+
+In this project, I have learned to use different tools and technologies that have allowed me to create an attractive and functional web application. In addition, I have been able to apply my design knowledge to create a user-friendly and pleasant user experience. Through this project, I have also discovered my passion for frontend programming and realized that it is something that I would like to continue exploring and developing in the future. In short, this project has been a great opportunity to learn and discover my interests and skills in the world of technology and web design.
 
 ---
-## Links
+## Links 📖
 
 - https://www.w3schools.com/
 - https://reactstrap.github.io/?path=/story/home-installation--page
