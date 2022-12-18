@@ -15,7 +15,7 @@
 - [Technology comparison](#technology-comparison)
 - [Planning](#planning)
 - [Conclusion](#conclusion)
--[Links](#links)
+- [Links](#links)
 - [Author](#author)
 
 ## Description and context
@@ -88,12 +88,15 @@ We are almost done, now you have to configure the properties of the applications
 ![image](https://user-images.githubusercontent.com/95490721/206922838-c909d359-0a04-4dac-994b-0e5004dd1bc9.png)
 
 Don't forget to start the frontend too!!
-  
+ ``` 
  _$ cd frontend/_
-  
+ ```
+ ```
  _$ cd react-hooks-crud/_
-  
+ ```
+ ```
   _$ npm start_
+ ```
 
 ---
 ## Data model
@@ -283,6 +286,31 @@ Regarding usability elements, we have a clear and simple clean design, adapted t
 
 ---
 ## Technology comparison
+
+For a comparison of technologies I have chosen the most similar and used. Angular vs React for the frontend and Node vs Springboot for the backend:
+
+###### Main differences between Angular and React:
+
+- Angular is a complete framework and React is a Javascript library that can be bundled with other libraries.
+- Angular's data flow is bidirectional, while React has a unidirectional data flow.
+- Angular updates the DOM (Document Object Model), while react uses a Virtual DOM.
+- Angular uses Typescript, a static language in terms of interfaces and classes (its advantage is that the code is more robust when it comes to identifying errors). React uses Javascript, with all the advantages and disadvantages that entails.
+
+###### Main differences between Node and SpringBoot:
+
+- Node.js, developed primarily in JavaScript, uses a single-threaded, event-driven, non-blocking I/O model. This makes it incredibly efficient and lightweight. Perfect for very data-intensive applications that need to operate in real time across distributed teams.
+
+- Spring Boot allows a quick start of a productive application. The idea behind Spring Boot is that it's very easy to run, so it minimizes the amount of hassle that goes into getting an application up and running.
+
+-Spring Boot is multi threaded. This is very useful when dealing with long or repetitive operations. When the main thread is consumed, others are used simultaneously.
+
+Node Pros
+
+- Javascript Community: Growing fast.
+- Light, fast
+- Single-threaded — low memory utilization
+- Great for I/O tasks
+- Npm is constantly growing.
 
 
 ---
