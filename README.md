@@ -1,4 +1,4 @@
-`<h1 align="center"> Medical Prescriptions</h1>
+<h1 align="center"> Medical Prescriptions</h1>
 
 ## Tabla de contenidos:
 ---
@@ -329,9 +329,14 @@ Spring Boot Pros:
 
 ###### Applying these differences in my project:
 
+Regarding the type of application, despite being responsive, I have focused more on it being a desktop application since its purpose is to be used as a work tool, generally on a computer.
+
 **In the frontend**
 
-I think if I had used angular in my project, taking advantage of the fact that angular generates the basic structure of the project, I would have a project with a clearer structure. By oder way one of the advantages of having used React is that it is very flexible in terms of adaptability with other frameworks, libraries and tools has allowed me to use icon libraries among others.
+I think if I had used angular in my project, taking advantage of the fact that angular generates the basic structure, I would have a project with a clearer structure.
+
+By oder way one of the advantages of having used React is that it is very flexible in terms of adaptability with other frameworks, libraries and tools has allowed me to use icon libraries among others.
+
 
 **In the backend**
 
