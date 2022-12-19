@@ -327,6 +327,16 @@ Spring Boot Pros:
 - Easy to use many dependencies.
 ```
 
+###### Applying these differences in my project:
+
+**In the frontend**
+
+I think if I had used angular in my project, taking advantage of the fact that angular generates the basic structure of the project, I would have a project with a clearer structure. By oder way one of the advantages of having used React is that it is very flexible in terms of adaptability with other frameworks, libraries and tools has allowed me to use icon libraries among others.
+
+**In the backend**
+
+Regarding the backend, by using Spring Boot with a programming language already known to me such as Java, it was easier for me to adapt and learn to build a backend with this tool.
+
 ---
 ## Planning 📋
 
@@ -359,7 +369,7 @@ In this project, I have learned to use different tools and technologies that hav
 - https://reactstrap.github.io/?path=/story/home-installation--page
 - https://reactjs.org/docs/getting-started.html
 
-## Autor/es :woman_technologist:
+## Author :woman_technologist:
 
 - Eva Luna villanueva Hernández
 
