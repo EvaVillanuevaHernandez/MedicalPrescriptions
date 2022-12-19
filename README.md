@@ -293,7 +293,7 @@ Regarding usability elements, we have a clear and simple clean design, adapted t
 ---
 ## Technology comparison
 
-For a comparison of technologies I have chosen the most similar and used. Angular vs React for the frontend and Node vs Springboot for the backend:
+For a comparison of technologies I have chosen the most similar and used. Angular vs React for the frontend and Sequalize vs Springboot for the backend:
 
 ###### Main differences between Angular and React:
 
@@ -302,30 +302,15 @@ For a comparison of technologies I have chosen the most similar and used. Angula
 - Angular updates the DOM (Document Object Model), while react uses a Virtual DOM.
 - Angular uses Typescript, a static language in terms of interfaces and classes (its advantage is that the code is more robust when it comes to identifying errors). React uses Javascript, with all the advantages and disadvantages that entails.
 
-###### Main differences between Node and SpringBoot:
+###### Main differences between Sequalize and SpringBoot:
 
-- Node.js, developed primarily in JavaScript, uses a single-threaded, event-driven, non-blocking I/O model. This makes it incredibly efficient and lightweight. Perfect for very data-intensive applications that need to operate in real time across distributed teams.
+- Sequelize is a promise-based Node.js ORM tool for Postgres, MySQL, MariaDB, SQLite, Microsoft SQL Server, Amazon Redshift and Snowflake’s Data Cloud. It features solid transaction support, relations, eager and lazy loading, read replication and more.
+
+- The Spring Framework provides a comprehensive programming and configuration model for modern Java-based enterprise applications - on any kind of deployment platform.
+
+- Sequelize allows us to perform powerful works in Digital Drawing and Painting environments.Provides access to a MySQL database by mapping database entries to objects and vice-versa.
 
 - Spring Boot allows a quick start of a productive application. The idea behind Spring Boot is that it's very easy to run, so it minimizes the amount of hassle that goes into getting an application up and running.
-
-Node Pros:
-
-```
-- Javascript Community: Growing fast.
-- Light, fast
-- Single-threaded — low memory utilization
-- Great for I/O tasks
-- Npm is constantly growing.
-```
-Spring Boot Pros:
-
-```
-- Java Community: mature and thriving.
-- Java is typed (Check at compile time)
-- Long-term support and maintainability.
-- Support for multiple threads.
-- Easy to use many dependencies.
-```
 
 ###### Applying these differences in my project:
 
