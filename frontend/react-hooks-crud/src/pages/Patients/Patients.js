@@ -7,7 +7,6 @@ import swal from 'sweetalert';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useParams, useNavigate } from 'react-router-dom';
 import PatientsDataService from "../../services/PatientService";
-import DoctorDataService from "../../services/DoctorService";
 import Header from "../../components/Header/Header";
 import * as BiIcons from 'react-icons/bi';
 

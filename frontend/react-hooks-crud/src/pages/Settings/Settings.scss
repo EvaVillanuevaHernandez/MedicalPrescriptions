@@ -1,4 +1,7 @@
-
+body {
+  position: relative;
+  min-height: 100vh;
+}
 .logo-set{
     display: flex;
     align-items: center;
