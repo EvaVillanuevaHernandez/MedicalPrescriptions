@@ -36,19 +36,8 @@ const remove = id => {
 const removeAll = () => {
   return http.delete(`/prescriptions`);
 };
-// const findByPatientName = patientName => {
-//   return http.get(`/prescriptions?patientName=${patientName}`);
-// };
-
-// const createPrescriptionWithPatient = (prescriptionId, patientId) => {
-//   let endPoint = `/patients/${patientId}/prescriptions/${prescriptionId}`;
-//   let dataToSend = new FormData();
-
-//   return http.post(endPoint, dataToSend);
-// }
 
 const PrescriptionsService = {
-  // createPrescriptionWithPatient,
   getAll,
   get,
   create,
