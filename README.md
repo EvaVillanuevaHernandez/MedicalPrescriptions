@@ -374,7 +374,7 @@ In this project, I have learned to use different tools and technologies that hav
 - https://reactstrap.github.io/?path=/story/home-installation--page
 - https://reactjs.org/docs/getting-started.html
 
-## Author :woman_technologist:
+## Author:woman_technologist:
 
 - Eva Luna villanueva Hernández
 
