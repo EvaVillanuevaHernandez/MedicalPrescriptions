@@ -6,7 +6,7 @@ import HeaderSett from "../../components/Header/HeaderSett";
 import * as GiIcons from 'react-icons/gi';
 import * as GrIcons from 'react-icons/gr';
 import  Switch  from "../../components/Switch/Switch";
-import Footer from "../../components/Footer/Footer";
+
 
 function Settings() {
     return (
@@ -38,12 +38,8 @@ function Settings() {
 
             <Footer/>
         </>
-
-            <Footer/>
-        </>
        
     );
-
 
 
 }
