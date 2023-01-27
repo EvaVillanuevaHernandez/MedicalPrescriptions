@@ -7,7 +7,7 @@ import './Register.scss';
 import AuthService from "../../services/auth.service";
 import Header from "../../components/Header/Header";
 
-const required = (value) => {
+export const required = (value) => {
     if (!value) {
         return (
             <div className="alert alert-danger" role="alert">
@@ -17,8 +17,18 @@ const required = (value) => {
     }
 };
 
-const validEmail = (value) => {
-    if (!isEmail(value)) {
+// export const validEmail = (value) => {
+//     if (!isEmail(value)) {
+//         return (
+//             <div className="alert alert-danger" role="alert">
+//                 This is not a valid email.
+//             </div>
+//         );
+//     }
+// };
+
+export const validEmail = (value) => {
+    if (!value || !isEmail(value)) {
         return (
             <div className="alert alert-danger" role="alert">
                 This is not a valid email.
@@ -26,6 +36,7 @@ const validEmail = (value) => {
         );
     }
 };
+
 
 const vusername = (value) => {
     if (value.length < 3 || value.length > 20) {
@@ -102,13 +113,11 @@ const Register = () => {
     };
 
     return (
-
         <>
             <Header/>
             <style>{'body {  background-color: var(--background); }'}</style>
             <div className="col-md-12">
-                <div className="register">
-                 
+                <div className="register"> 
                     <Form onSubmit={handleRegister} ref={form}>
                         {!successful && (
                             <div>

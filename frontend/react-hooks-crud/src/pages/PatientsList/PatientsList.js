@@ -53,6 +53,8 @@ const PatientsList = () => {
                 <button className="button-new-patient" type="button"><AiIcons.AiOutlinePlus /> Patient </button>
               </Link>
             </div>
+
+
             <br />
             <div className="general">
               {

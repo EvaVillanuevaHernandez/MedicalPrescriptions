@@ -10,7 +10,7 @@ import AuthService from "../../services/auth.service";
 import HeaderLogin from "../Header/HeaderLogin.js";
 
 
-const required = (value) => {
+export const required = (value) => {
   if (!value) {
     return (
       <div className="alert alert-danger" role="alert">

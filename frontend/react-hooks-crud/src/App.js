@@ -19,7 +19,7 @@ import Home from "./pages/Home/Home";
 import Settings from "./pages/Settings/Settings";
 import Doctors from "./pages/Doctors/Doctors";
 import Register from "./pages/Register/Register";
-
+import Support from "./pages/Support/Support";
 const App = () => {
   const [setShowAdminBoard] = useState(false);
   const [setCurrentUser] = useState(undefined);
@@ -52,6 +52,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/settings" element={<Settings/>} />
+        <Route path="/support" element={<Support/>} />
         <Route path="/patientsList" element={<PatientList/>} />
         <Route path="/prescriptionsList" element={<PrescriptionsList />} />
         <Route path="/prescriptions" element={<Prescriptions/>} />

@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,13 +20,18 @@ import org.springframework.web.multipart.MultipartFile;
 import com.eva.backend.entity.models.Patient;
 import com.eva.backend.entity.services.IPatientService;
 import com.eva.backend.tools.ImageUtility;
+import com.eva.backend.entity.services.PatientServiceImpl;
+import javax.security.auth.message.callback.PrivateKeyCallback;
 
 @RestController
+
 @CrossOrigin(origins = "*")
 public class PatientController {
 
     @Autowired
     IPatientService patientService;
+    @Autowired
+    PatientServiceImpl PatientServiceImpl;
 
     @GetMapping("/patients")
     public List<Patient> getAllPatients() {
@@ -98,4 +105,9 @@ public class PatientController {
         patientService.delete(id);
     }
 
+    //EXPORT PDF
+    @GetMapping("/patients/exportReport")
+    public ResponseEntity<Resource> exportReport(@RequestParam int idP,@RequestParam  String history){
+        return this.PatientServiceImpl.exportReport(idP,history);
+    }
 }

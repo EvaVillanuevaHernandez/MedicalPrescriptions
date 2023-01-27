@@ -3,6 +3,7 @@ package com.eva.backend.entity.services;
 import java.util.List;
 
 import com.eva.backend.entity.models.Prescription;
+import org.springframework.data.jpa.repository.Query;
 
 public interface IPrescriptionService {
 	public Prescription get(int id );
@@ -14,9 +15,6 @@ public interface IPrescriptionService {
 	public void DtoP(int idDoctor, int idPrescription);
 
 	public void PtoP(int idPatient, int idPrescription);
-	
-	/*//FK
-	public List<Prescription> findAllFromId(int id);*/
-	
+
 }
 
