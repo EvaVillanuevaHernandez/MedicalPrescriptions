@@ -7,7 +7,7 @@ const register = (username, email, password) => {
   // const encodedUsername = btoa(username);
   return axios.post(API_URL + "signup", {
      username,
-    //username:encodedUsername,
+    //encodedUsername,
     email,
     password,
     //password: encodedPassword,

@@ -67,7 +67,7 @@ public class Patient implements Serializable {
 	}
 
 	public String getDni() {
-		return dni;
+		return this.dni;
 	}
 
 	public void setDni(String dni) {
@@ -106,7 +106,6 @@ public class Patient implements Serializable {
 		this.history = history;
 	}
 
-
 	public String getNameImg() {
 		return nameImg;
 	}
@@ -135,8 +134,7 @@ public class Patient implements Serializable {
 		return doctor;
 	}
 
-
 	public void setDoctor(Doctor doctor) {
 		this.doctor = doctor;
-	}			
+	}
 }

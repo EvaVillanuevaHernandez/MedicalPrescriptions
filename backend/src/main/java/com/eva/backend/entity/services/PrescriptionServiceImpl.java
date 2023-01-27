@@ -11,7 +11,12 @@ import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.validation.constraints.NotNull;
 
 @Service
 public class PrescriptionServiceImpl implements IPrescriptionService {
@@ -75,10 +80,5 @@ public class PrescriptionServiceImpl implements IPrescriptionService {
             });
         });
     }
-//FK
-/*
-@Override
-public List<Prescription> findAllFromId(int id) {
-	return prescriptionDao.findAllFromId(id);
-}*/
+
 }
