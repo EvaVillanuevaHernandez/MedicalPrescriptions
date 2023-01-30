@@ -21,8 +21,8 @@ import Doctors from "./pages/Doctors/Doctors";
 import Register from "./pages/Register/Register";
 import Support from "./pages/Support/Support";
 const App = () => {
-  const [setShowAdminBoard] = useState(false);
-  const [setCurrentUser] = useState(undefined);
+  const [showAdminBoard, setShowAdminBoard] = useState(false);
+  const [currentUser,setCurrentUser] = useState(undefined);
  
   useEffect(() => {
     const user = AuthService.getCurrentUser();

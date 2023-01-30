@@ -7,11 +7,11 @@ function NavBar() {
     return (
         <>
           <style>{'body { background-color: #7994A6 ; }'}</style>
-            <nav class="navbar">
-                <div class="container-fluid">                   
+            <nav className='navbar'>
+                <div className="container-fluid">                   
                     <img src="/images/logoD.png" className="logo" alt="" />                 
                    
-                    <ul class="nav navbar-nav">
+                    <ul className="nav navbar-nav">
                         <a href="/login"  ><BsIcons.BsPersonFill className="login-home"/>  </a>    
                     </ul>
                 </div>
